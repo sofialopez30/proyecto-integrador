@@ -1,11 +1,60 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= texto %></h1>
-    <p></p>
-  </body>
+<html lang="es">
+<!-- Include Head -->
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link width="" rel="shortcut icon" href="./images/logo-mercado-liebre.jpg" />
+
+	<title> Mercado Liebre Argentina</title>
+	<!-- Font Awesome Stylesheet -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	<!-- Bootstrap Grid Stylesheet -->
+	<link rel="stylesheet" href="./css/bootstrap-grid.min.css">
+	<!-- Own Stylesheet -->
+	<link rel="stylesheet" href="./css/app.css">
+</head>
+
+<body>
+	<!-- Header -->
+  <%- include('partials/headerLogueado') %>
+	<!-- /Header -->
+
+	<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Agregar productos</h2>
+			</div>
+			<!-- Show the "ultimos" products -->
+			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario para agregar prodcutos al catálogo. <br>
+			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos. <br>
+			Eliminen estás líneas y coloquen el formulario. <br>
+			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
+			////////////////
+
+      <form method="GET" action="/agregar-producto">
+				<label>Imagen:</label>
+				<input type="file" placeholder="imagen del producto" name="imagen" required><br>
+			  
+				<label>Nombre del producto:</label>
+				<input type="text" placeholder="ingrese nombre del producto" name="nombreProducto" required><br>
+			  
+				<label>Descripción:</label>
+				<textarea placeholder="ingrese una breve descripcion del producto" name="descripcion" required></textarea><br>
+			  
+				<label>Fecha de carga:</label>
+				<input type="date" placeholder="ingrese la fecha en la que se cargo el producto" name="fechaCarga" required><br>
+			  
+				<button type="submit">Agregar producto al catálogo</button>
+			  </form>
+			</h2>
+
+
+	<!-- footer -->
+  <%- include('partials/footer') %>
+	<!-- /footer -->
+</body>
+
 </html>
