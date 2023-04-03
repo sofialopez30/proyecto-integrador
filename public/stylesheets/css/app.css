@@ -1,9 +1,9 @@
-/* ====== Fonts ======
+/* ====== Fonts ====== */
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
 
 
 /*====== Variables ======*/
-/* :root {
+:root {
   --yellow: #EAC926;
   --dark-blue: #03264C;
   --light-blue: #1259c3;
@@ -15,7 +15,7 @@
 
 
 /*====== Basics ======*/
-/* * {
+{
   box-sizing: border-box;
 }
 
