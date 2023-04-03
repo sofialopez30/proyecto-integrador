@@ -1,9 +1,9 @@
-/*====== Fonts ======*/
+/* ====== Fonts ======
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
 
 
 /*====== Variables ======*/
-:root {
+/* :root {
   --yellow: #EAC926;
   --dark-blue: #03264C;
   --light-blue: #1259c3;
@@ -11,11 +11,11 @@
   --light-gray: #ebebeb;
   --green: #39b54a;
   --base-font-family: 'Roboto', sans-serif
-}
+} */
 
 
 /*====== Basics ======*/
-* {
+/* * {
   box-sizing: border-box;
 }
 
@@ -196,7 +196,7 @@ hr {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-}
+} 
 
 .product-box_data h2 {
   font-size: 2.4em;
@@ -527,4 +527,4 @@ textarea.form-input {
     width: 95%;
     margin: auto;
   }
-}
+} 
