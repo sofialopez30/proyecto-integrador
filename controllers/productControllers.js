@@ -1,3 +1,5 @@
+let listado_cervezas = require("../data/index"); // aca traje la lista de cervezas
+
 let productController = {
 
     index: function(req, res) {
@@ -9,7 +11,15 @@ let productController = {
     },
 
     product: function(req, res) {
-        return res.render("product", {texto: "producto"})
+        let id = req.params.id  
+        let cerveza 
+        for (let i = 0; i < listado_cervezas.length; i++) {
+            if (listado_cervezas[i].id == id){
+                cerveza = listado_cervezas[i]
+            }
+        }
+
+        return res.render("product", {texto: "producto", cerveza : cerveza}) // le paso una variable que se llama cerveza y tiene la info que me pediste
     },
 
     productAdd: function(req, res) {
