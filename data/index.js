@@ -4,7 +4,20 @@ let cervezas = [{
     nombre: "Juicypa",
     descripcion: "Una American IPA con sabores y aromas frutales intensos, cuerpo suave y sensación en boca con textura delicada, turbia. Se percibe menos amargor que en las IPAs tradicionales, pero el lúpulo siempre es dominante",
     alcochol: "7,5 % alcohol",
-    amargor: "medio"
+    amargor: "medio",
+    imagen: "01-cervezasartesanales_William-Street-Beer-Co-Label-design-1.jpeg", // agregue 
+    comentarios: [
+        {
+            id: 1,
+            nombre: "juan",
+            comentario: "buena cerveza"
+        },
+        {
+            id: 2,
+            nombre: "pedro",
+            comentario: "mala cerveza"
+        } // agregue 
+    ]
 },
 
 {
