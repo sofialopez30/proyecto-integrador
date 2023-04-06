@@ -3,7 +3,7 @@ let listado_cervezas = require("../data/index"); // aca traje la lista de cervez
 let productController = {
 
     index: function(req, res) {
-        return res.render("index", {texto: "index"})
+        return res.render("index", {listado_cervezas: listado_cervezas})
     },
 
     login: function(req, res) {
