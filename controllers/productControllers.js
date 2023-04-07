@@ -11,6 +11,7 @@ let productController = {
     },
 
     product: function(req, res) {
+
         let id = req.params.id;
         let cerveza;
         for (let i = 0; i < listado_cervezas.length; i++) {
@@ -31,7 +32,16 @@ let productController = {
     },
 
     profile: function(req, res) {
-        return res.render("profile", {texto: "profile"})
+        
+        let id = req.params.id; // todo esto no funciona :(, preguntar por qué
+        let info_usuario;
+        for (let i = 0; i < listado_cervezas.length; i++) {
+            if (listado_cervezas[i].id == id) {
+                info_usuario = listado_cervezas[i].usuario;
+            
+            }
+        }
+        return res.render("profile", {texto: "profile", info_usuario: info_usuario, info: listado_cervezas, id: req.params.id})
     }, 
 
     profileEdit: function(req, res) {

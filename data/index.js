@@ -43,7 +43,7 @@ let cervezas = [
         imagen: "kolcsh.png", 
         usuario: {
             id: 1,
-            nombre: "",
+            nombre: "Juana Domínguez",
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
@@ -76,7 +76,7 @@ let cervezas = [
         imagen: "scotch.png", 
         usuario: {
             id: 1,
-            nombre: "",
+            nombre: "Pedro Pérez",
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
@@ -109,7 +109,7 @@ let cervezas = [
         imagen: "porter.png", 
         usuario: {
             id: 1,
-            nombre: "",
+            nombre: "Lucila Ramírez",
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
@@ -142,7 +142,7 @@ let cervezas = [
         imagen: "cuatro.png", 
         usuario: {
             id: 1,
-            nombre: "",
+            nombre: "Cecilia López",
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
@@ -175,7 +175,7 @@ let cervezas = [
         imagen: "monasterio.png", 
         usuario: {
             id: 1,
-            nombre: "",
+            nombre: "Martina Duarte",
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
@@ -208,7 +208,7 @@ let cervezas = [
         imagen: "lacentinela.png", 
         usuario: {
             id: 1,
-            nombre: "",
+            nombre: "Facundo Mengano",
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
@@ -241,7 +241,7 @@ let cervezas = [
         imagen: "catalina.png",
         usuario: {
             id: 1,
-            nombre: "",
+            nombre: "Gabriela Martínez",
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
@@ -274,7 +274,7 @@ let cervezas = [
         imagen: "imperial.png", 
         usuario: {
             id: 1,
-            nombre: "",
+            nombre: "Marta",
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
@@ -307,7 +307,7 @@ let cervezas = [
         imagen: "an.png", 
         usuario: {
             id: 1,
-            nombre: "",
+            nombre: "Omar",
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
