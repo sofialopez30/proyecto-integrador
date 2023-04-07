@@ -1,4 +1,4 @@
-let listado_cervezas = require("../data/index"); // aca traje la lista de cervezas
+let listado_cervezas = require("../data/index"); 
 
 let productController = {
 
@@ -19,7 +19,7 @@ let productController = {
             }
         }
 
-        return res.render("product", {texto: "producto", cerveza : cerveza}) // le paso una variable que se llama cerveza y tiene la info que me pediste
+        return res.render("product", {texto: "producto", cerveza: cerveza, info: listado_cervezas, id: req.params.id}) 
     },
 
     productAdd: function(req, res) {
