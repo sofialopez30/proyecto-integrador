@@ -2,11 +2,11 @@
 let cervezas = [
     {
         id: 1,
-        nombre: "Juicy IPA",
-        descripcion: "Cerveza de color dorado, con un aroma a frutas tropicales y cítricas, con un sabor a frutas tropicales y cítricas, con un final amargo y seco.",
+        nombre: "Playa grande",
+        descripcion: "Un estilo propio a base de trigo con un poco de avena, cáscara de naranja, coriandro y jengibre que la hacen más cítrica, compleja y refrescante. Como es tradicional, NO LA FILTRAMOS, por lo que se ve turbia. Nuestro homenaje a la Playa emblemática de Mar del Plata, donde el relax, los deportes y la diversión son una forma de vida.",
         alcochol: "7,5%",
         amargor: "medio",
-        imagen: "01-cervezasartesanales_William-Street-Beer-Co-Label-design-1.jpeg", // agregue
+        imagen: "playa.png", // agregue
         usuario: {
             id: 1,
             nombre: "William Street Beer Co.",
@@ -39,7 +39,7 @@ let cervezas = [
         descripcion: "Existen muchas cervezas doradas y refrescantes. Pero frutadas y con destellos finales de lúpulo, sólo hay un estilo: la Kölsch. En Antares rescatamos la antigua receta de la cerveza favorita de los bebedores en colonia, Alemania, y la honramos desde 1998. En nuestra cocina, su legado sigue intacto.",
         alcochol: "",
         amargor: "",
-        imagen: "00-Cerveza-L-ermita.jpeg", // agregue
+        imagen: "kolcsh.png", // agregue
         usuario: {
             id: 1,
             nombre: "",
@@ -68,11 +68,11 @@ let cervezas = [
     },
     {
         id: 3,
-        nombre: "",
+        nombre: "Scotch",
         descripcion: "",
         alcochol: "",
         amargor: "",
-        imagen: "", // agregue
+        imagen: "scotch.png", // agregue
         usuario: {
             id: 1,
             nombre: "",
@@ -101,11 +101,11 @@ let cervezas = [
     },
     {
         id: 4,
-        nombre: "",
+        nombre: "Porter",
         descripcion: "",
         alcochol: "",
         amargor: "",
-        imagen: "", // agregue
+        imagen: "porter.png", // agregue
         usuario: {
             id: 1,
             nombre: "",
@@ -134,11 +134,11 @@ let cervezas = [
     },
     {
         id: 5,
-        nombre: "",
-        descripcion: "",
+        nombre: "Cuatro tres",
+        descripcion: "A los marplatenses nos gusta disfrutar de la costa todos los días. En invierno nos ponemos el Cuatro Tres, le hacemos frente al frío y nos metemos al mar. El traje nos abriga dentro del agua y la Doppelbock fuera. Una cerveza cobriza intensa en maltas, con carácter sedoso y la dosis de lúpulo justa para redondear su personalidad.",
         alcochol: "",
         amargor: "",
-        imagen: "", // agregue
+        imagen: "cuatro.png", // agregue
         usuario: {
             id: 1,
             nombre: "",
@@ -167,11 +167,11 @@ let cervezas = [
     },
     {
         id: 6,
-        nombre: "",
+        nombre: "Monasterio",
         descripcion: "",
         alcochol: "",
         amargor: "",
-        imagen: "", // agregue
+        imagen: "monasterio.png", // agregue
         usuario: {
             id: 1,
             nombre: "",
@@ -200,11 +200,11 @@ let cervezas = [
     },
     {
         id: 7,
-        nombre: "",
+        nombre: "La centinela",
         descripcion: "",
         alcochol: "",
         amargor: "",
-        imagen: "", // agregue
+        imagen: "lacentinela.png", // agregue
         usuario: {
             id: 1,
             nombre: "",
@@ -233,11 +233,11 @@ let cervezas = [
     },
     {
         id: 8,
-        nombre: "",
+        nombre: "Catalina la grande",
         descripcion: "",
         alcochol: "",
         amargor: "",
-        imagen: "", // agregue
+        imagen: "catalina.png", // agregue
         usuario: {
             id: 1,
             nombre: "",
@@ -266,11 +266,11 @@ let cervezas = [
     },
     {
         id: 9,
-        nombre: "",
-        descripcion: "",
+        nombre: "Imperial stout",
+        descripcion: "Catalina la Grande amaba las emociones fuertes. Por eso, la Imperial Stout, negra y tostada, empapada de alcohol y pasas, amarga y ahumada, era su cerveza favorita. Esencia inglesa de exportación. Tímidos, abstenerse.",
         alcochol: "",
         amargor: "",
-        imagen: "", // agregue
+        imagen: "imperial.png", // agregue
         usuario: {
             id: 1,
             nombre: "",
@@ -299,11 +299,11 @@ let cervezas = [
     },
     {
         id: 10,
-        nombre: "",
-        descripcion: "",
+        nombre: "20 años",
+        descripcion: "Para un año tan especial hicimos una cerveza tremenda. Nunca vista. Diseñada y concebida por nosotros. Muy alcohólica para poder soportar guarda prolongada. Compleja, aromática y especiada por el uso de levaduras belgas, frutas y especias. Añejada durante meses, maduró, creció y mejoró sin perder la esencia. Es una cerveza para disfrutar despacio. Reflexionar, mirar con orgullo el pasado y renovar el compromiso hacia el futuro.",
         alcochol: "",
         amargor: "",
-        imagen: "", // agregue
+        imagen: "an.png", // agregue
         usuario: {
             id: 1,
             nombre: "",

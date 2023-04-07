@@ -1,19 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="/images/logo-mercado-liebre.jpg" />
+<%- include('partials/head') %>
 
-	<title> Mercado Liebre Argentina</title>
-	<!-- Font Awesome Stylesheet -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="/stylesheets/css/bootstrap-grid.min.css">
-	<!-- Own Stylesheet -->
-	<link rel="stylesheet" href="/stylesheets/css/app.css">
-</head>
 <body>
 	<!-- Header -->
 	<%- include('partials/header') %>
@@ -30,13 +19,9 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="./images/products/default-image.png" alt="" class="product-detail-img"> 
-					<!-- esto es para que se vea la imagen en la descripcion del producto pero se ve muy grande y en todos los productos: -->
-					<!-- <img src="/stylesheets/images/products/01-cervezasartesanales_William-Street-Beer-Co-Label-design-1.jpeg" alt="cerveza william street"> -->
+					<img src="/images/products/<%= cerveza.imagen %>" alt="" class="product-detail-img"> 
 					<p class="product-detail-description">
-						Descripción corta del producto. En la página principal solo se ven 2 líneas de estar descripción.Lorem ipsum dolor,
-						sit amet consectetur adipisicing elit. Tae ipsam amet eum, totam dolore libero illo unde? Consectetur dolorem neque
-						veritatis.</p>
+						Descripción corta del producto. En la página principal solo se ven 2 líneas de estar descripción.</p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
@@ -44,8 +29,8 @@
 							<img src="https://via.placeholder.com/35" alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="profile.html">Nombre usuario: </a> </strong>
-								 Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora doloribus enim aspernatur fugit corrupti suscipit sit dolore magnam, praesentium explicabo inventore molestias facilis labore. Fugit ipsa mollitia odit inventore consequuntur.</p>
+								<strong> <a href="/profile">Nombre usuario: </a> </strong>  
+								 Texto del comentario que escribió el usuario </p>
 							</div>
 						</article>
 						<article>
@@ -53,7 +38,7 @@
 							<div class="data">
 								<p class="user">
 									<strong> <a href="profile.html">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur.</p>
+									Texto del comentario que escribió el usuario .</p>
 							</div>
 						</article>
 						<article>
@@ -61,7 +46,7 @@
 							<div class="data">
 								<p class="user">
 									<strong> <a href="profile.html">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit.
+									Texto del comentario que escribió el usuario 
 									</p>
 							</div>
 						</article>
@@ -70,7 +55,7 @@
 							<div class="data">
 								<p class="user">
 									<strong> <a href="profile.html">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet.</p>
+									Texto del comentario que escribió el usuario.</p>
 							</div>
 						</article>
 						<article>
@@ -78,8 +63,7 @@
 							<div class="data">
 								<p class="user">
 									<strong> <a href="profile.html">Nombre usuario: </a> </strong>
-									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Tempora doloribus enim aspernatur fugit corrupti suscipit sit dolore</p>
+									Texto del comentario que escribió el usuario </p>
 							</div>
 						</article>
 
