@@ -1,16 +1,18 @@
 /* ====== Fonts ====== */
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;500&family=Lato&family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300&family=Heebo:wght@300;500&family=Lato&family=Open+Sans&display=swap');
 
 
 /*====== Variables ======*/
 :root {
-  --yellow: #EAC926;
+  --yellow: #ae8a4b99;
   --dark-blue: #03264C;
-  --light-blue: #1259c3;
-  --gray: #666666;
-  --light-gray: #ebebeb;
+  --light-blue: #7a3515;
+  --gray: #171717;
+  --light-gray: #eae6ca;
   --green: #39b54a;
-  --base-font-family: 'Roboto', sans-serif
+  --base-font-family: 'Heebo', sans-serif;
 } */
 
 
@@ -43,6 +45,8 @@ a {
   display: inline-block;
   text-decoration: none;
   color: inherit;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
 }
 
 figure {
@@ -259,7 +263,7 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: #ffffff;
+  background-color: #ae8a4b99;
   padding: 20px 0;
   margin-top: 80px;
 }
