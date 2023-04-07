@@ -52,7 +52,7 @@ let cervezas = [
         comentarios: [
             {
                 id: 1,
-                comentario: "",
+                comentario: 'Dulce, deliciosa, nada más que pedir',
                 usuario: {
                     id: 1,
                     nombre: "",
