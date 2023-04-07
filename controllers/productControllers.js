@@ -11,11 +11,11 @@ let productController = {
     },
 
     product: function(req, res) {
-        let id = req.params.id  
-        let cerveza 
+        let id = req.params.id;
+        let cerveza;
         for (let i = 0; i < listado_cervezas.length; i++) {
             if (listado_cervezas[i].id == id){
-                cerveza = listado_cervezas[i]
+                cerveza = listado_cervezas[i];
             }
         }
 
