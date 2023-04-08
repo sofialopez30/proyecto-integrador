@@ -9,11 +9,12 @@ let cervezas = [
         imagen: "playa.png",
         usuario: {
             id: 1,
-            nombre: "William Street Beer Co.",
+            nombre: "Martina",
             email: "wsbc@ejemplo.com",
             contrasenia: "1234",
             fecha_nacimiento: "DD-MM-AAAA",
-            numero_documento: "12345678"
+            numero_documento: "12345678",
+            comentario: "hola"
         
         },
         comentarios: [
