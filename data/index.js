@@ -14,7 +14,7 @@ let cervezas = [
             contrasenia: "1234",
             fecha_nacimiento: "DD-MM-AAAA",
             numero_documento: "12345678",
-            comentario: "hola"
+            comentario: "Excelente, nada más que pedir, un suspiro al alma"
         
         },
         comentarios: [
@@ -28,7 +28,8 @@ let cervezas = [
                     contrasenia: "",
                     fecha_nacimiento: "DD-MM-AAAA",
                     numero_documento: "12345678",
-                    foto_perfil: "default-imgae.png"
+                    foto_perfil: "default-imgae.png",
+                    
                 }
             }
         ],
@@ -48,12 +49,12 @@ let cervezas = [
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
-            numero_documento: ""
+            numero_documento: "",
+            comentario: 'Cerveza dorada y demasiado refrescante. 10 puntos'
         },
         comentarios: [
             {
                 id: 1,
-                comentario: 'Dulce, deliciosa, nada más que pedir',
                 usuario: {
                     id: 1,
                     nombre: "",
@@ -61,7 +62,8 @@ let cervezas = [
                     contrasenia: "",
                     fecha_nacimiento: "",
                     numero_documento: "",
-                    foto_perfil: ""
+                    foto_perfil: "",
+                    comentario: 'Dulce, deliciosa, nada más que pedir',
                 }
             }
         ],
@@ -81,7 +83,8 @@ let cervezas = [
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
-            numero_documento: ""
+            numero_documento: "",
+            comentario: 'No soy fan de las cervezas pero la verdad la dulsura de esta maravilla me asombra'
         },
         comentarios: [
             {

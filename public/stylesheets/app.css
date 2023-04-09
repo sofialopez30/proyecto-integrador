@@ -6,11 +6,11 @@
 
 /*====== Variables ======*/
 :root {
-  --yellow: #ae8a4b99;
+  --yellow: #bd915a;
   --dark-blue: #03264C;
   --light-blue: #7a3515;
   --gray: #171717;
-  --light-gray: #eae6ca;
+  --light-gray: #ae8a4b99;;
   --green: #39b54a;
   --base-font-family: 'Heebo', sans-serif;
 } */
@@ -66,6 +66,17 @@ textarea {
 hr {
   border: none;
   border-bottom: solid 1px var(--light-gray);
+}
+label{
+  font-family: 'Barlow Condensed', sans-serif;
+  font-style: normal;
+  font-size: 20px;
+}
+button{
+  font-family: 'Barlow Condensed', sans-serif;
+  font-style: normal;
+  font-size: 24px;
+  color: #171717;
 }
 
 
@@ -156,9 +167,10 @@ hr {
 
 
 
+
 /*====== Banner ======*/
 .banner {
-  background-image: url(/images/img-home-banner.jpg);
+  /* background-image: url(/images/img-home-banner.jpg); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -173,8 +185,8 @@ hr {
 }
 
 .products-title {
-  font-size: 2.4em;
-  font-weight: 400;
+  font-size: 3.2em;
+  font-weight: 30;
   color: var(--gray);
 }
 
@@ -262,7 +274,7 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: #ae8a4b99;
+  background-color:  #bd915a;
   padding: 20px 0;
   margin-top: 80px;
 }
