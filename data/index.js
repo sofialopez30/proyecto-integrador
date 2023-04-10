@@ -193,4 +193,48 @@ let cervezas = [
     },   
 ]
 
+
+
+let data = {
+    productos : [
+        {
+        id: 10,
+        nombre: "20 años",
+        descripcion: "Para un año tan especial hicimos una cerveza tremenda. Nunca vista. Diseñada y concebida por nosotros. Muy alcohólica para poder soportar guarda prolongada. Compleja, aromática y especiada por el uso de levaduras belgas, frutas y especias. Añejada durante meses, maduró, creció y mejoró sin perder la esencia. Es una cerveza para disfrutar despacio. Reflexionar, mirar con orgullo el pasado y renovar el compromiso hacia el futuro.",
+        alcochol: "",
+        amargor: "",
+        imagen: "an.png", 
+        comentario: [
+            {
+                usuario: "dsdfsd",
+                texto: "sdfsdfsdfs",
+            }
+        ],
+        usuario: {
+            id: 1,
+            nombre: "Omar",
+            email: "",
+            contrasenia: "",
+            fecha_nacimiento: "",
+            numero_documento: "",
+            fecha_carga: ""
+        },
+    },
+   ],
+    usuarios : [
+        {
+
+
+        usuario: {
+            id: 1,
+            nombre: "Omar",
+            email: "",
+            contrasenia: "",
+            fecha_nacimiento: "",
+            numero_documento: "",
+            fecha_carga: ""
+        },
+    }    ]
+}
+
 module.exports = cervezas;

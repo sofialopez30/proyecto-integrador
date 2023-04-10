@@ -34,10 +34,9 @@ let productController = {
     profile: function(req, res) {
         
         let id = req.params.id; 
-        let info_usuario;
         console.log(listado_cervezas[0]);
        
-        return res.render("profile", {info_usuario: listado_cervezas[0].usuario, info: listado_cervezas, id: req.params.id, listado_cervezas: listado_cervezas})
+        return res.render("profile", { info: listado_cervezas, id: req.params.id, listado_cervezas: listado_cervezas})
     }, 
 
     profileEdit: function(req, res) {

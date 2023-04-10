@@ -22,11 +22,11 @@
 						<div class="row">
 							<div class="img-container offset-3 col-2">
 								
-								<img src="/images/users/<%= info.usuario.imagen %>" alt="<%= info.usuario.nombre %>" class="foto-perfil">
+								<img src="/images/users/<%=  %>" alt="<%=  %>" class="foto-perfil">
 							</div>
 							<div class="data-container col-6">
 								<di class="d-flex align-items-center ">
-									<h1 class="main-title">  <%= info.usuario.nombre %>
+									<h1 class="main-title">  <%=  %>
 										<a href="/profile-edit">
 											<i class="fas fa-cog"></i>
 										</a>
@@ -67,8 +67,8 @@
 							<article class="product-box_data">
 								<h2><%= listado_cervezas[i].nombre %></h2>
 								<p><%= listado_cervezas[i].descripcion %></p>
-								<p>Comentarios: <%= listado_cervezas[i].comentarios.length %></p>
-								<p>Alcohol: <%= listado_cervezas[i].alcochol  %></p>
+								<p>Comentarios: <%= %></p>
+								<p>Alcohol: <%=  %></p>
 							</article>
 						</a>
 					</section>
