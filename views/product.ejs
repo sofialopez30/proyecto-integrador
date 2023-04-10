@@ -11,9 +11,9 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"> <%= cerveza.nombre %> </h2>  
+			<h2 class="products-title"> <%= cerveza.nombre %> </h2>  <!-- Esto da error en la pagina de product-add-->
 			<p class="product-detail-description">
-				<a href="product-add.html">Editar</a>
+				<a href="product-add.html">"Editar" Hacer que funcione esta pagina (product-add)</a>
 			</p>
 		</div>
 
@@ -31,7 +31,7 @@
 									<img src="https://via.placeholder.com/35" alt="">
 									<div class="data">
 										<p class="user">
-										<strong> <a href="/profile"> <%= info[i].usuario.nombre %> </a> </strong>  
+										<strong> <a href="/profile"> <%= info[i].usuario.nombre %>: </a> </strong>  
 										 <%= info[i].usuario.comentario %> </p>
 									</div>
 								</article>
@@ -39,8 +39,8 @@
 									<img src="https://via.placeholder.com/35" alt="">
 									<div class="data">
 										<p class="user">
-											<strong> <a href="/profile"><%= info[i].usuario.nombre %> </a> </strong>
-											Texto del comentario que escribió el usuario .</p>
+											<strong> <a href="/profile"><%= info[i].usuario.nombre %>: </a> </strong>
+											<%= info[i].usuario.comentario %> </p>
 									</div>
 								</article>
 								<article>

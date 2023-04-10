@@ -40,7 +40,7 @@ let cervezas = [
         id: 2,
         nombre: "Kölsch",
         descripcion: "Existen muchas cervezas doradas y refrescantes. Pero frutadas y con destellos finales de lúpulo, sólo hay un estilo: la Kölsch. En Antares rescatamos la antigua receta de la cerveza favorita de los bebedores en colonia, Alemania, y la honramos desde 1998. En nuestra cocina, su legado sigue intacto.",
-        alcochol: "",
+        alcochol: "9,0",
         amargor: "",
         imagen: "kolcsh.png", 
         usuario: {
@@ -84,7 +84,7 @@ let cervezas = [
             contrasenia: "",
             fecha_nacimiento: "",
             numero_documento: "",
-            comentario: 'No soy fan de las cervezas pero la verdad la dulsura de esta maravilla me asombra'
+            comentario: 'No soy fan de las cervezas pero la verdad la dulzura de esta maravilla me asombra'
         },
         comentarios: [
             {
