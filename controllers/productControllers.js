@@ -7,7 +7,7 @@ let productController = {
     },
 
     login: function(req, res) {
-        return res.render("login", {texto: "login"})
+        return res.render("login", {})
     },
 
     product: function(req, res) {
@@ -20,20 +20,20 @@ let productController = {
             }
         }
 
-        return res.render("product", {texto: "producto", cerveza: cerveza, info: listado_cervezas, id: req.params.id}) 
+        return res.render("product", {cerveza: cerveza, info: listado_cervezas, id: req.params.id}) 
     },
 
     productAdd: function(req, res) {
-        return res.render("product-add", {texto: "product-add"})
+        return res.render("product-add", {})
     },
 
     register: function(req, res) {
-        return res.render("register", {texto: "register"})
+        return res.render("register", {})
     },
 
     profile: function(req, res) {
         
-        let id = req.params.id; // todo esto no funciona :(, preguntar por qué
+        let id = req.params.id; 
         let info_usuario;
         for (let i = 0; i < listado_cervezas.length; i++) {
             if (listado_cervezas[i].id == id) {
@@ -41,11 +41,11 @@ let productController = {
             
             }
         }
-        return res.render("profile", {texto: "profile", info_usuario: info_usuario, info: listado_cervezas, id: req.params.id})
+        return res.render("profile", {info_usuario: info_usuario, info: listado_cervezas, id: req.params.id, listado_cervezas: listado_cervezas})
     }, 
 
     profileEdit: function(req, res) {
-        return res.render("profile-edit", {texto: "profile edit"})
+        return res.render("profile-edit", {})
     }
 
 };

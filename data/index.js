@@ -9,7 +9,8 @@ let cervezas = [
         imagen: "playa.png",
         usuario: {
             id: 1,
-            nombre: "Martina",
+            nombre: "Martina Stewart",
+            imagen: "stewart.jpg",
             email: "wsbc@ejemplo.com",
             contrasenia: "1234",
             fecha_nacimiento: "DD-MM-AAAA",
@@ -21,16 +22,7 @@ let cervezas = [
             {
                 id: 1,
                 comentario: "Muy buena cerveza, la recomiendo",
-                usuario: {
-                    id: 1,
-                    nombre: "Juan Perez",
-                    email: "juancitoperez@gmail.com",
-                    contrasenia: "",
-                    fecha_nacimiento: "DD-MM-AAAA",
-                    numero_documento: "12345678",
-                    foto_perfil: "default-imgae.png",
-                    
-                }
+                
             }
         ],
         fecha_carga: "DD-MM-AAAA",
