@@ -10,6 +10,7 @@ let loginRouter = require("./routes/login");
 let productRouter = require("./routes/product");
 let registerRouter = require("./routes/register");
 let profileRouter = require("./routes/profile");
+let productaddRouter= require('./routes/product-add');
 
 var app = express();
  
@@ -29,6 +30,7 @@ app.use("/login", loginRouter);
 app.use("/product", productRouter); // dentro de product va product add
 app.use("/register", registerRouter);
 app.use("/profile", profileRouter); // dentro de profile va profile edit
+app.use('/product-add', productaddRouter);
 // no hice de search results ni de header logueado             
 
 // catch 404 and forward to error handler
