@@ -35,17 +35,17 @@ let productController = {
         
         let id = req.params.id; 
         let info_usuario;
-        for (let i = 0; i < listado_cervezas.length; i++) {
-            if (listado_cervezas[i].id == id) {
-                info_usuario = listado_cervezas[i].usuario;
-            
-            }
-        }
-        return res.render("profile", {info_usuario: info_usuario, info: listado_cervezas, id: req.params.id, listado_cervezas: listado_cervezas})
+        console.log(listado_cervezas[0]);
+       
+        return res.render("profile", {info_usuario: listado_cervezas[0].usuario, info: listado_cervezas, id: req.params.id, listado_cervezas: listado_cervezas})
     }, 
 
     profileEdit: function(req, res) {
         return res.render("profile-edit", {})
+    },
+
+    searchResults: function(req, res) {
+        return res.render("search-results",{})
     }
 
 };

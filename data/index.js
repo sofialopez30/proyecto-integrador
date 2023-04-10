@@ -15,19 +15,11 @@ let cervezas = [
             contrasenia: "1234",
             fecha_nacimiento: "DD-MM-AAAA",
             numero_documento: "12345678",
-            comentario: "Excelente, nada más que pedir, un suspiro al alma"
-        
+            comentario: "Excelente, nada más que pedir, un suspiro al alma",
+            fecha_carga: "",
         },
-        comentarios: [
-            {
-                id: 1,
-                comentario: "Muy buena cerveza, la recomiendo",
-                
-            }
-        ],
-        fecha_carga: "DD-MM-AAAA",
-
     },
+
     {
         id: 2,
         nombre: "Kölsch",
@@ -42,26 +34,11 @@ let cervezas = [
             contrasenia: "",
             fecha_nacimiento: "",
             numero_documento: "",
-            comentario: 'Cerveza dorada y demasiado refrescante. 10 puntos'
+            comentario: 'Cerveza dorada y demasiado refrescante. 10 puntos',
+            fecha_carga: ""
         },
-        comentarios: [
-            {
-                id: 1,
-                usuario: {
-                    id: 1,
-                    nombre: "",
-                    email: "",
-                    contrasenia: "",
-                    fecha_nacimiento: "",
-                    numero_documento: "",
-                    foto_perfil: "",
-                    comentario: 'Dulce, deliciosa, nada más que pedir',
-                }
-            }
-        ],
-        fecha_carga: "",
-
     },
+
     {
         id: 3,
         nombre: "Scotch",
@@ -76,26 +53,11 @@ let cervezas = [
             contrasenia: "",
             fecha_nacimiento: "",
             numero_documento: "",
-            comentario: 'No soy fan de las cervezas pero la verdad la dulzura de esta maravilla me asombra'
+            comentario: 'No soy fan de las cervezas pero la verdad la dulzura de esta maravilla me asombra',
+            fecha_carga: ""
         },
-        comentarios: [
-            {
-                id: 1,
-                comentario: "",
-                usuario: {
-                    id: 1,
-                    nombre: "",
-                    email: "",
-                    contrasenia: "",
-                    fecha_nacimiento: "",
-                    numero_documento: "",
-                    foto_perfil: ""
-                }
-            }
-        ],
-        fecha_carga: "",
-
     },
+
     {
         id: 4,
         nombre: "Porter",
@@ -109,26 +71,12 @@ let cervezas = [
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
-            numero_documento: ""
+            numero_documento: "",
+            comentario: "horrible",
+            fecha_carga: ""
         },
-        comentarios: [
-            {
-                id: 1,
-                comentario: "",
-                usuario: {
-                    id: 1,
-                    nombre: "",
-                    email: "",
-                    contrasenia: "",
-                    fecha_nacimiento: "",
-                    numero_documento: "",
-                    foto_perfil: ""
-                }
-            }
-        ],
-        fecha_carga: "",
-
     },
+
     {
         id: 5,
         nombre: "Cuatro tres",
@@ -142,26 +90,12 @@ let cervezas = [
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
-            numero_documento: ""
+            numero_documento: "",
+            comentario: "me puse empedo re rápido",
+            fecha_carga: ""
         },
-        comentarios: [
-            {
-                id: 1,
-                comentario: "",
-                usuario: {
-                    id: 1,
-                    nombre: "",
-                    email: "",
-                    contrasenia: "",
-                    fecha_nacimiento: "",
-                    numero_documento: "",
-                    foto_perfil: ""
-                }
-            }
-        ],
-        fecha_carga: "",
-
     },
+
     {
         id: 6,
         nombre: "Monasterio",
@@ -175,26 +109,12 @@ let cervezas = [
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
-            numero_documento: ""
+            numero_documento: "",
+            comentario: "rica",
+            fecha_carga: ""
         },
-        comentarios: [
-            {
-                id: 1,
-                comentario: "",
-                usuario: {
-                    id: 1,
-                    nombre: "",
-                    email: "",
-                    contrasenia: "",
-                    fecha_nacimiento: "",
-                    numero_documento: "",
-                    foto_perfil: ""
-                }
-            }
-        ],
-        fecha_carga: "",
-
     },
+
     {
         id: 7,
         nombre: "La centinela",
@@ -208,26 +128,12 @@ let cervezas = [
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
-            numero_documento: ""
+            numero_documento: "",
+            comentario: "fea",
+            fecha_carga: ""
         },
-        comentarios: [
-            {
-                id: 1,
-                comentario: "",
-                usuario: {
-                    id: 1,
-                    nombre: "",
-                    email: "",
-                    contrasenia: "",
-                    fecha_nacimiento: "",
-                    numero_documento: "",
-                    foto_perfil: ""
-                }
-            }
-        ],
-        fecha_carga: "",
-
     },
+
     {
         id: 8,
         nombre: "Catalina la grande",
@@ -241,26 +147,13 @@ let cervezas = [
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
-            numero_documento: ""
-        },
-        comentarios: [
-            {
-                id: 1,
-                comentario: "",
-                usuario: {
-                    id: 1,
-                    nombre: "",
-                    email: "",
-                    contrasenia: "",
-                    fecha_nacimiento: "",
-                    numero_documento: "",
-                    foto_perfil: ""
-                }
-            }
-        ],
-        fecha_carga: "",
+            numero_documento: "",
+            comentario: "nada que decir",
+            fecha_carga: ""
 
+        },
     },
+
     {
         id: 9,
         nombre: "Imperial stout",
@@ -274,26 +167,12 @@ let cervezas = [
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
-            numero_documento: ""
+            numero_documento: "",
+            comentario: "hola",
+            fecha_carga: ""
         },
-        comentarios: [
-            {
-                id: 1,
-                comentario: "",
-                usuario: {
-                    id: 1,
-                    nombre: "",
-                    email: "",
-                    contrasenia: "",
-                    fecha_nacimiento: "",
-                    numero_documento: "",
-                    foto_perfil: ""
-                }
-            }
-        ],
-        fecha_carga: "",
-
     },
+
     {
         id: 10,
         nombre: "20 años",
@@ -307,25 +186,10 @@ let cervezas = [
             email: "",
             contrasenia: "",
             fecha_nacimiento: "",
-            numero_documento: ""
+            numero_documento: "",
+            comentario: "",
+            fecha_carga: ""
         },
-        comentarios: [
-            {
-                id: 1,
-                comentario: "",
-                usuario: {
-                    id: 1,
-                    nombre: "",
-                    email: "",
-                    contrasenia: "",
-                    fecha_nacimiento: "",
-                    numero_documento: "",
-                    foto_perfil: ""
-                }
-            }
-        ],
-        fecha_carga: "",
-
     },   
 ]
 

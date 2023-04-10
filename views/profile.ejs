@@ -17,18 +17,16 @@
 
 	<!-- ESTE FOR ESTÁ TODO MAL -->
 
-	<% for (let i = 0; i < info.length; i++) { %> 
-
-		<% if (id = info[i].usuario.id) { %>
+	
 			<section class="info-usuario container products-wrapper">
 						<div class="row">
 							<div class="img-container offset-3 col-2">
 								
-								<img src="/images/users/<%= info[i]usuario.imagen %>" alt="<%= info[i]usuario.nombre %>" class="foto-perfil">
+								<img src="/images/users/<%= info.usuario.imagen %>" alt="<%= info.usuario.nombre %>" class="foto-perfil">
 							</div>
 							<div class="data-container col-6">
-								<div class="d-flex align-items-center ">
-									<h1 class="main-title"> <%= nombre usuario %>
+								<di class="d-flex align-items-center ">
+									<h1 class="main-title">  <%= info.usuario.nombre %>
 										<a href="/profile-edit">
 											<i class="fas fa-cog"></i>
 										</a>
@@ -46,9 +44,7 @@
 						</div>
 					</section>
 
-			<% } %>
-
-		<% } %>	
+		
 
 	
 
