@@ -44,7 +44,7 @@ let productController = {
     },
 
     searchResults: function(req, res) {
-        return res.render("search-results",{})
+        return res.render("search-results",{listado_cervezas: listado_cervezas})
     }
 
 };
