@@ -24,7 +24,7 @@ let productController = {
     },
 
     productAdd: function(req, res) {
-        return res.render("product ", {texto: "product add"})
+        return res.render("product-add ", {texto: "product add"})
     },
 
     register: function(req, res) {
