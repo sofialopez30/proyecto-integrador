@@ -2,10 +2,7 @@ let express = require("express");
 let router = express.Router();
 let productController = require("../controllers/productControllers");
 
-router.get("/:id", productController.product);  // agregue el :id
-
-
-// router.get("/product-add", productController.productAdd);
+router.get("/:id", productController.product);  
 
 module.exports = router;
 

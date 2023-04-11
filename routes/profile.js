@@ -1,8 +1,8 @@
 let express = require("express");
 let router = express.Router();
-let productController = require("../controllers/productControllers");
+let userController = require("../controllers/userController");
 
-router.get("/edit", productController.profileEdit);
-router.get("/id/:id", productController.profile);
+router.get("/edit", userController.profileEdit);
+router.get("/id/:id", userController.profile);
 
 module.exports = router;

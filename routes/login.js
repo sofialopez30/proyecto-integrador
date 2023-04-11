@@ -1,7 +1,7 @@
 let express = require("express");
 let router = express.Router();
-let productController = require("../controllers/productControllers");
+let userController = require("../controllers/userController");
 
-router.get("/", productController.login);
+router.get("/", userController.login);
 
 module.exports = router;

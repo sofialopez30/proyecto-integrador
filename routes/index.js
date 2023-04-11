@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-let productController = require("../controllers/productControllers");
+let indexController = require("../controllers/indexController");
 
-router.get("/", productController.index);
+router.get("/", indexController.index);
 
 module.exports = router;
