@@ -5,7 +5,7 @@ let productController = {
     product: function(req, res) {
 
         let id = req.params.id;
-        let cerveza;
+        let cerveza; // declaro cerveza 
         for (let i = 0; i < listado_cervezas.length; i++) {
             if (listado_cervezas[i].id == id){
                 cerveza = listado_cervezas[i];
@@ -19,9 +19,6 @@ let productController = {
         return res.render("product-add", {})
     },
 
-    searchResults: function(req, res) {
-        return res.render("search-results",{listado_cervezas: listado_cervezas})
-    }
 
 };
 
