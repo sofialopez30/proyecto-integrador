@@ -4,15 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index'); // este tiene que quedar
-var usersRouter = require('./routes/users'); // este tiene que quedar
-// let loginRouter = require("./routes/login");
-let productRouter = require("./routes/product"); // este tiene que quedar
-// let registerRouter = require("./routes/register");
-// let profileRouter = require("./routes/profile");
-// let profileEditRouter = require("./routes/profile-edit");
-// let productaddRouter= require('./routes/product-add');
-// let searchResultsRouter = require("./routes/search-results");
+var indexRouter = require('./routes/index'); 
+var usersRouter = require('./routes/users'); 
+let productRouter = require("./routes/product"); 
 
 var app = express();
  
@@ -26,15 +20,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter); //este tiene que quedar
-app.use('/users', usersRouter); //este tiene que quedar 
-// app.use("/login", loginRouter);
-app.use("/product", productRouter); // este tiene que quedar
-// app.use("/register", registerRouter);
-// app.use("/profile", profileRouter); 
-// app.use('/product-add', productaddRouter);
-// app.use("/profile-edit", profileEditRouter);
-// app.use("/search-results", searchResultsRouter);
+app.use('/', indexRouter); 
+app.use('/users', usersRouter); 
+app.use("/product", productRouter); 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
