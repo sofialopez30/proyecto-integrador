@@ -1,5 +1,5 @@
-CREATE SCHEMA users;
-USE users;
+CREATE SCHEMA cervelax;
+USE cervelax;
 
 CREATE TABLE infoUsuarios(
 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
