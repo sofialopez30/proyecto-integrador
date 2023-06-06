@@ -26,13 +26,13 @@ let userController = {
     // a partir de aca son los de esta entrega no voy a tocar los otros
     profileValidar: (req, res) => {
       
-        res.redirect('/profile/' + req.session.userId)
+        res.redirect('/profile/:id' + req.session.userId)
 
    
     },
     registerUsuario: (req, res) => {
       
-            res.redirect('/profile/' + req.session.userId)
+            res.redirect('/profile/:id' + req.session.userId)
     
        
     },
@@ -44,7 +44,7 @@ let userController = {
             }
         }
         // Buscamos el usuario que deberia ser unico
-        db.Usuarios.findOne(buscoUsuario).then(usuario => {
+        db.Usuario.findOne(buscoUsuario).then(usuario => {
             // hay que comparar la contraseña ingresada en el login 
             // con la que ingresada en el registro 
 

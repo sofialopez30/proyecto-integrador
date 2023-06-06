@@ -1,4 +1,5 @@
-let listado_cervezas = require("../data/index"); 
+let listado_cervezas = require("../data/index");
+let db= require('../database/models') 
 
 let productController = {
 
@@ -23,21 +24,21 @@ let productController = {
     comentar: function(req,res) {
         let error = {};
         if(res.locals.usuarioId){
-            db.Comentarios.create({
+            db.Comentario.create({
                 texto: req.body.text,
                 infoUsuario_id : req.session.userId, //esto viene de los modelos  // para que funcionen vamos a tener que agregar esto en
                                                      // el register o login form para que podamos tener el id del user :  req.session.userId = usuario.id;
                 infoProducto_id: req.body.productId 
             }).then(comentario =>{
                 console.log(comentario)
-                res.redirect('/product/' + req.body.productId)
+                res.redirect('/product/:id' + req.body.productId)
             }).catch(err=>{
                 console.log(err)
             })
         }else{
             error.message= 'Si deseas comentar, registarte!'            
             res.locals.error=error    
-            res.redirect('/register/')
+            res.redirect('/users/register')
         }
     },
  
