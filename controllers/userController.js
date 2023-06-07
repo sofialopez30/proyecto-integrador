@@ -3,9 +3,15 @@ let db= require ('../database/models')
 let Usuario = db.Usuario
 
 let userController = {
+
+
     
     login: function(req, res) {
-        return res.render("login", {})
+        if(req.session.user != undefined){
+            return res.redirect('/')
+        } else {
+            return res.render('login');
+        }
     },
 
     register: function(req, res) {
@@ -45,12 +51,32 @@ let userController = {
 
    
     },
-    registerUsuario: (req, res) => {
-      
-            res.redirect('/profile/:id' + req.session.userId)
-    
-       
+   
+    registerUsuario: function(req, res){
+        let form = req.body
+
+        //Encriptar la contraseña antes de guardar en la base de datos.
+        let user = { //aca agarro el nombre que pusimos en los modelos y lo del al lado tomo la informacion del form con el name que le pusimos en cada label
+            email:form.email,
+            user:form.usuario, 
+            contrasenia: form.contrasenia,
+            fotoPerfil: form.img,
+            fecha: form.fechaNac,
+            numDocumento: form.numeroDocumento
+        }
+        //Usar un método de Sequelize para guardar datos.
+        db.Usuario.create(user) //Pasar un objeto literal con los datos a guardar.
+            .then(function(usuarioCreado){ //retorna el elemento creado
+                //Dentro del then debería redireccionar a otra ruta.
+                console.log(usuarioCreado);
+                    // return res.send(form);
+                return res.redirect('/');
+            })
+            .catch(function(e){
+                console.log(e);
+            })
     },
+
     validarLogin: (req, res) => {
         // Filtramos el usuario a traves de un campo que sea UNICO en la base de datos
         let buscoUsuario = {
@@ -96,6 +122,23 @@ let userController = {
         // Eliminamos la cookie del cliente
         res.clearCookie('userId');
         res.redirect('/');
+    },
+    delete:function(req, res){
+        //Tendremos que pensar el código del controlador dependiendo de qué estrategia usemos para identificar el id del elemento a borrar. En este caso estamos usando la estrategia del campo hidden dentro del formulario. 
+        let id = req.body.id;
+
+        // return res.send(id);
+
+        db.Usuario.destroy({
+            where: { id:id }
+        })
+            .then(function(){
+                return res.redirect('/');
+            })
+            .catch(function(e){
+                console.log(e);
+            })
+
     }
 
 };

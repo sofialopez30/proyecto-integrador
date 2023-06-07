@@ -8,6 +8,9 @@ module.exports = (sequelize, dataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
+        user: {
+            type: dataTypes.STRING   // este hay que agregarlo en la bbase de datos que no esta 
+        },
         email : {
             type: dataTypes.STRING
         }, 
