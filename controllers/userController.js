@@ -59,7 +59,7 @@ let userController = {
         let user = { //aca agarro el nombre que pusimos en los modelos y lo del al lado tomo la informacion del form con el name que le pusimos en cada label
             email:form.email,
             user:form.usuario, 
-            contrasenia: form.contrasenia,
+            contrasenia: bcriptjs.hashSync(form.contrasenia, 10),
             fotoPerfil: form.img,
             fecha: form.fechaNac,
             numDocumento: form.numeroDocumento
@@ -77,27 +77,34 @@ let userController = {
             })
     },
 
+    
+
     validarLogin: (req, res) => {
         // Filtramos el usuario a traves de un campo que sea UNICO en la base de datos
         let buscoUsuario = {
             where: { 
-                usuario: req.body.name
+                usuario: req.body.user //no se si aca va user o va usuario
             }
         }
         // Buscamos el usuario que deberia ser unico
         db.Usuario.findOne(buscoUsuario).then(usuario => {
             // hay que comparar la contraseña ingresada en el login 
             // con la que ingresada en el registro 
-
+            let error= {};
+            if (email == null){
+                let error= 'el email no es correcto o se encuentra vacio ';
+                res.locals.error = error ;
+                res.render('login', {error:error})
+            }
             if(usuario == null){ // busca si el usuario ingresado es el mismo
                 let error = "El usuario o la contraseña no son correctos"
                 res.render('login', {error:error})
-            } else if (bcrypt.compareSync(req.body.password, usuario.password) == false){ //busca si la constarna es la misma
+            } else if (bcrypt.compareSync(req.body.contrasenia, usuario.contrasenia) == false){ //busca si la constarna es la misma
                 let error = "El usuario o la contraseña no son correctos"
                 res.render('login', {error:error})
             } else {
                 req.session.usuario = {
-                    nombre: usuario.nombre_apellido, 
+                    nombre: usuario.user, //esto no se si esta bien estas cosas asi
                     usuario: usuario.usuario,
                     id: usuario.id
                 }
@@ -109,12 +116,12 @@ let userController = {
                 if(req.body.remember){
                     res.cookie('userId', usuario.id, {}); //guarda la cookie, que se define del lado del cliente, en este caso mi objeto seria 'userId' (el nombre de la cookie)
                 }
-                res.redirect('./profile/' + usuario.id);
+                res.redirect('/user/profile/' + usuario.id);
             }
     }).catch(err =>{
         console.log(err)
     });
-    },
+    }, 
 
     logout: (req, res) => {
         // Borramos la sesion del servidor
