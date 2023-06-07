@@ -1,5 +1,7 @@
 let listado_cervezas = require("../data/index"); 
 let db = require("../database/models");
+let Producto= db.Producto;
+const Op= db.sequelize.Op; 
 
 let indexController = {
     
@@ -9,7 +11,10 @@ let indexController = {
             include : [
                 {association : 'producto_usuario'},
                 {association : 'producto_comentario', include : 'comentario_usuario'}
-            ]
+            ],
+            order: [[
+                'updatedAt', 'ASC'
+            ]]
         })
         .then(arrayProductos => {
             // res.send(arryaProductos)
@@ -19,7 +24,22 @@ let indexController = {
 
     },
     searchResults: function(req, res) {
-        return res.render("search-results",{listado_cervezas: listado_cervezas})
+        let search= req.query.search
+        Producto.findAll({
+            where: {
+                nombreProducto: {
+                  [Op.like]: `%${search}%`
+                }
+              },
+              include: [
+                {association: ' producto_usuario'},
+                {association: ' producto_comentario', include:[' comentario_usuario']}
+              ], 
+        })
+        .then(function(producto){
+            res.render ('search-results', {listado_cervezas:producto});
+        })
+        .catch(err => res.send(err))
     },
 
 };

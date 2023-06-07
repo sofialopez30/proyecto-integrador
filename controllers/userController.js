@@ -1,4 +1,6 @@
 let listado_cervezas = require("../data/index"); 
+let db= require ('../database/models')
+let Usuario = db.Usuario
 
 let userController = {
     
@@ -13,9 +15,22 @@ let userController = {
     profile: function(req, res) {
         
         let id = req.params.id; 
-        console.log(listado_cervezas[0]);
+        Usuario.findByPk(id, {
+            include: [
+                {association : 'user_product'},
+                {association : 'producto_comentario', include : 'comentario_usuario'}
+            ]
+        })
+        .then (function(user){
+            if (user){
+                res.render ('profile', {user:user});
+            } else{
+                res.send (' Este usuario no existe')
+            }
+        })
+        //console.log(listado_cervezas[0]);
        
-        return res.render("profile", { info: listado_cervezas, id: req.params.id, listado_cervezas: listado_cervezas})
+        //return res.render("profile", { info: listado_cervezas, id: req.params.id, listado_cervezas: listado_cervezas})
     }, 
 
     profileEdit: function(req, res) {

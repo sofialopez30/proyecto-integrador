@@ -1,22 +1,38 @@
 let listado_cervezas = require("../data/index");
 let db= require('../database/models') 
+let Producto= db.Producto;
+const Op= db.sequelize.Op; 
 
 let productController = {
 
     product: function(req, res) {
 
         let id = req.params.id;
-        let cerveza; // declaro cerveza 
-        for (let i = 0; i < listado_cervezas.length; i++) {
-            if (listado_cervezas[i].id == id){
-                cerveza = listado_cervezas[i];
+        Producto.findByPk(id, {
+            include: [
+                {association : 'producto_usuario'},
+                {association : 'producto_comentario', include : 'comentario_usuario'}
+            ]
+        })
+        // let cerveza; // declaro cerveza 
+        // for (let i = 0; i < listado_cervezas.length; i++) {
+        //     if (listado_cervezas[i].id == id){
+        //         cerveza = listado_cervezas[i];
+        //     }
+        // }
+        .then (function(producto){
+            if (producto){
+                res.render('product', {producto: producto}) // no se si esta bien producot: producto, no se si deberia ir nombreProducto
+            } else{
+                res.send (' Este producto no se encuentra en nuestra web, prueba otra cosa!')
             }
-        }
+        })
+        .catch(err => res.send(err))
 
-        return res.render("product", {cerveza: cerveza, info: listado_cervezas, id: req.params.id}) 
+        
     },
 
-    productAdd: function(req, res) {
+    productAdd: function(req, res) {   /// hay que hacer este que tire la base de datos
         return res.render("product-add", {})
     },
 
