@@ -10,7 +10,14 @@
 
 <body>
 	<!-- Header -->
-  <%- include('partials/headerLogueado') %>
+  <!-- <%- include('partials/headerLogueado') %> -->
+
+  <% if(locals.user) { %>
+	<%- include('partials/headerLogueado') %>
+		<% } else { %>
+			<%- include('partials/header') %>
+				<% } %>
+
 	<!-- /Header -->
 
 	<!-- Novedades -->
@@ -28,7 +35,7 @@
 			<!-- Show the "ultimos" products -->
 			<h2 class="col-12"> <i>
 
-      <form method="GET" action="/">
+      <form method="POST" 
 				<label>Imagen:</label>
 				<input type="file" placeholder="imagen del producto" name="img" required class="form-input" ><br>
 			  

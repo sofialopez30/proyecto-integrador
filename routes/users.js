@@ -14,9 +14,15 @@ router.get('/profile-edit', userController.profileEdit);
 // falta hcaer uno que deje subir las cosas y guardarlas 
 
 
-router.post('/profile/:id', userController.profileValidar)
-router.post('/registerGuardar', userController.registerUsuario); //toma los datos del formulario y los usa para crear el usuario en la base de datos
-router.post('/loginGuardar', userController.validarLogin); // toma los datos del formulario de login y guarda en base de datos y de ahi los usa
+// BORAR // router.post('/profile/:id', userController.profileValidar) 
+
+router.post('/login', userController.validarLogin);
+router.post('/register', userController.registerUsuario); //toma los datos del formulario y los usa para crear el usuario en la base de datos
+
+router.post('profile-edit', userController.editarPerfil);  // AGREGAR ESTE METODO EN USER CONTROLLER 
+
+// BORRAR router.post('/loginGuardar', userController.validarLogin); // toma los datos del formulario de login y guarda en base de datos y de ahi los usa.
+
 router.post('/logout', userController.logout);
 router.post('/delete', userController.delete);
 

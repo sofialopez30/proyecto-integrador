@@ -19,7 +19,7 @@ let productController = {
         //     if (listado_cervezas[i].id == id){
         //         cerveza = listado_cervezas[i];
         //     }
-        // }
+        // }  // esto habria que borrarlo 
         .then (function(producto){
             if (producto){
                 res.render('product', {producto: producto}) // no se si esta bien producot: producto, no se si deberia ir nombreProducto
@@ -33,11 +33,29 @@ let productController = {
     },
 
     productAdd: function(req, res) {   /// hay que hacer este que tire la base de datos
-        return res.render("product-add", {})
+        // agrego esto:
+        if (req.session.user) {
+            return res.render("product-add")
+        } else {
+            return res.redirect("/users/login")
+        } 
+        // return res.render("product-add", {})
+    },
+
+    // agrego esto:
+    procesarProductAdd: function(req, res){
+        // este metodo es para la ruta POST
     },
 
     //nueva entrega
     comentar: function(req,res) {
+
+        // agregue:
+        if (req.session.user === undefined){
+            res.send("No esta logueado, no puede comentar")
+        }
+        /// 
+        
         let error = {};
         if(res.locals.usuarioId){
             db.Comentario.create({
