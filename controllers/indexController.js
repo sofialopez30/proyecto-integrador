@@ -1,7 +1,7 @@
 let listado_cervezas = require("../data/index"); 
 let db = require("../database/models");
 let Producto= db.Producto;
-const Op= db.sequelize.Op; 
+const Op = db.sequelize.Op; 
 
 let indexController = {
     
@@ -17,7 +17,7 @@ let indexController = {
             ]]
         })
         .then(arrayProductos => {
-            // res.send(arryaProductos)
+            //res.send(arrayProductos)
             res.render("index", {listado_cervezas: arrayProductos})
         })
         .catch(err => res.send(err))
