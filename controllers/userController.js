@@ -1,21 +1,93 @@
 let listado_cervezas = require("../data/index"); 
-let db= require ('../database/models')
-let Usuario = db.Usuario
+let db= require ('../database/models');
+let Usuario = db.Usuario;
 
 let userController = {
 
-
-    
     login: function(req, res) {
-        if(req.session.user != undefined){
+        if (req.session.user != undefined) {
             return res.redirect('/')
+
         } else {
             return res.render('login');
         }
     },
 
+    validarLogin: (req, res) => {
+        // Filtramos el usuario a través de un campo que sea único en la base de datos
+        let buscoUsuario = {
+            where: { usuario: req.body.user } // Fijarse si va user o usuario 
+        }
+        // Buscamos el usuario que deberia ser unico
+        db.Usuario.findOne(buscoUsuario).then(usuario => {
+            // Hay que comparar la contraseña ingresada en el login con la que ingresada en el registro 
+            let error= {};
+            if (email == null) {
+                let error= 'el email no es correcto o se encuentra vacio ';
+                res.locals.error = error ;
+                res.render('login', {error:error})
+            }
+
+            if (usuario == null) { // Busco si el usuario ingresado es el mismo
+                let error = "El usuario o la contraseña no son correctos"
+                res.render('login', {error:error})
+                
+            } else if (bcrypt.compareSync(req.body.contrasenia, usuario.contrasenia) == false) { //Busco si la contraseña es la misma
+                let error = "El usuario o la contraseña no son correctos"
+                res.render('login', {error:error})
+
+            } else {
+                req.session.usuario = {
+                    nombre: usuario.user, //Fijarse esto
+                    usuario: usuario.usuario,
+                    id: usuario.id
+                }
+                
+                req.session.userId = usuario.id;
+                
+                //guardo lo que nescesito en la sesion
+               
+                // En caso de que haya seleccionado recodarme, guardamos una cookie (check)
+                if(req.body.remember){
+                    res.cookie('userId', usuario.id, {}); //guarda la cookie, que se define del lado del cliente, en este caso mi objeto seria 'userId' (el nombre de la cookie)
+                }
+                res.redirect('/user/profile/' + usuario.id);
+            }
+    }).catch(err =>{
+        console.log(err)
+    });
+    }, 
+
     register: function(req, res) {
-        return res.render("register", {})
+        if (req.session.user != undefined) {
+            return res.redirect("/")
+        } else {
+            return res.render("register")
+        }
+    },
+
+    registerUsuario: function(req, res){
+        let form = req.body;
+        //Encriptar la contraseña para guardarlo en la base de datos
+        let user = { //aca agarro el nombre que pusimos en los modelos y lo del al lado tomo la informacion del form con el name que le pusimos en cada label
+            email:form.email,
+            user:form.usuario, 
+            contrasenia: bcriptjs.hashSync(form.contrasenia, 10),
+            fotoPerfil: form.img,
+            fecha: form.fechaNac,
+            numDocumento: form.numeroDocumento
+        }
+        //Usar un método de Sequelize para guardar datos.
+        db.Usuario.create(user) //Pasar un objeto literal con los datos a guardar.
+            .then(function(usuarioCreado){ //retorna el elemento creado
+                //Dentro del then debería redireccionar a otra ruta.
+                console.log(usuarioCreado);
+                    // return res.send(form);
+                return res.redirect('/');
+            })
+            .catch(function(e){
+                console.log(e);
+            })
     },
 
     profile: function(req, res) {
@@ -40,113 +112,126 @@ let userController = {
     }, 
 
     profileEdit: function(req, res) {
-        return res.render("profile-edit", {})
-    },
-
-
-    // a partir de aca son los de esta entrega no voy a tocar los otros
-    profileValidar: (req, res) => {
-      
-        res.redirect('/profile/:id' + req.session.userId)
-
-   
-    },
-   
-    registerUsuario: function(req, res){
-        let form = req.body
-
-        //Encriptar la contraseña antes de guardar en la base de datos.
-        let user = { //aca agarro el nombre que pusimos en los modelos y lo del al lado tomo la informacion del form con el name que le pusimos en cada label
-            email:form.email,
-            user:form.usuario, 
-            contrasenia: bcriptjs.hashSync(form.contrasenia, 10),
-            fotoPerfil: form.img,
-            fecha: form.fechaNac,
-            numDocumento: form.numeroDocumento
+        if (req.session.user == undefined) {
+            return res.redirect("/")
+        } else {
+            return res.render("profile-edit")
         }
-        //Usar un método de Sequelize para guardar datos.
-        db.Usuario.create(user) //Pasar un objeto literal con los datos a guardar.
-            .then(function(usuarioCreado){ //retorna el elemento creado
-                //Dentro del then debería redireccionar a otra ruta.
-                console.log(usuarioCreado);
-                    // return res.send(form);
-                return res.redirect('/');
+    },
+
+    editarPerfil: function(req, res) {
+        db.Usuario.update({
+            email: req.body.email,
+            user: req.body.usuario,
+            contrasenia: bcriptjs.hashSync(req.body.contrasenia, 10),
+            fotoPerfil: req.body.img,
+            fecha: req.body.fechaNac,
+            numDocumento: req.body.numeroDocumento
+        })
+    },
+
+    logout: function(req, res) {
+        //Borramos la sesión del servidor
+        req.session.destroy();
+        //Eliminamos la cookie del cliente
+        res.clearCookie("userId");
+        res.redirect("/");
+    },
+
+    delete: function(req, res) {
+        //Tendremos que pensar el código del controlador dependiendo de qué estrategia usemoa para identificar el id del elemento a borrar. En este caso estamos usando la estrategia del campo hidden dentro del formulario.
+        let id = req.body.id;
+
+        //return res.send(id);
+        db.Usuario.destroy({
+            where: {id: id}
+        })
+            .then(function() {
+                return res.redirect("/");
             })
-            .catch(function(e){
-                console.log(e);
+            .catch(function(error){
+                console.log(error);
             })
     },
+
+    // profileValidar: (req, res) => {
+      
+    //     res.redirect('/profile/:id' + req.session.userId)
+
+   
+    // },
+   
+    // registerUsuario: function(req, res){
+    //     let form = req.body
+
+    //     //Encriptar la contraseña antes de guardar en la base de datos.
+    //     let user = { //aca agarro el nombre que pusimos en los modelos y lo del al lado tomo la informacion del form con el name que le pusimos en cada label
+    //         email:form.email,
+    //         user:form.usuario, 
+    //         contrasenia: bcriptjs.hashSync(form.contrasenia, 10),
+    //         fotoPerfil: form.img,
+    //         fecha: form.fechaNac,
+    //         numDocumento: form.numeroDocumento
+    //     }
+    //     //Usar un método de Sequelize para guardar datos.
+    //     db.Usuario.create(user) //Pasar un objeto literal con los datos a guardar.
+    //         .then(function(usuarioCreado){ //retorna el elemento creado
+    //             //Dentro del then debería redireccionar a otra ruta.
+    //             console.log(usuarioCreado);
+    //                 // return res.send(form);
+    //             return res.redirect('/');
+    //         })
+    //         .catch(function(e){
+    //             console.log(e);
+    //         })
+    // },
 
     
 
-    validarLogin: (req, res) => {
-        // Filtramos el usuario a traves de un campo que sea UNICO en la base de datos
-        let buscoUsuario = {
-            where: { 
-                usuario: req.body.user //no se si aca va user o va usuario
-            }
-        }
-        // Buscamos el usuario que deberia ser unico
-        db.Usuario.findOne(buscoUsuario).then(usuario => {
-            // hay que comparar la contraseña ingresada en el login 
-            // con la que ingresada en el registro 
-            let error= {};
-            if (email == null){
-                let error= 'el email no es correcto o se encuentra vacio ';
-                res.locals.error = error ;
-                res.render('login', {error:error})
-            }
-            if(usuario == null){ // busca si el usuario ingresado es el mismo
-                let error = "El usuario o la contraseña no son correctos"
-                res.render('login', {error:error})
-            } else if (bcrypt.compareSync(req.body.contrasenia, usuario.contrasenia) == false){ //busca si la constarna es la misma
-                let error = "El usuario o la contraseña no son correctos"
-                res.render('login', {error:error})
-            } else {
-                req.session.usuario = {
-                    nombre: usuario.user, //esto no se si esta bien estas cosas asi
-                    usuario: usuario.usuario,
-                    id: usuario.id
-                }
-                req.session.userId = usuario.id;
+    // validarLogin: (req, res) => {
+    //     // Filtramos el usuario a traves de un campo que sea UNICO en la base de datos
+    //     let buscoUsuario = {
+    //         where: { 
+    //             usuario: req.body.user //no se si aca va user o va usuario
+    //         }
+    //     }
+    //     // Buscamos el usuario que deberia ser unico
+    //     db.Usuario.findOne(buscoUsuario).then(usuario => {
+    //         // hay que comparar la contraseña ingresada en el login 
+    //         // con la que ingresada en el registro 
+    //         let error= {};
+    //         if (email == null){
+    //             let error= 'el email no es correcto o se encuentra vacio ';
+    //             res.locals.error = error ;
+    //             res.render('login', {error:error})
+    //         }
+    //         if(usuario == null){ // busca si el usuario ingresado es el mismo
+    //             let error = "El usuario o la contraseña no son correctos"
+    //             res.render('login', {error:error})
+    //         } else if (bcrypt.compareSync(req.body.contrasenia, usuario.contrasenia) == false){ //busca si la constarna es la misma
+    //             let error = "El usuario o la contraseña no son correctos"
+    //             res.render('login', {error:error})
+    //         } else {
+    //             req.session.usuario = {
+    //                 nombre: usuario.user, //esto no se si esta bien estas cosas asi
+    //                 usuario: usuario.usuario,
+    //                 id: usuario.id
+    //             }
+    //             req.session.userId = usuario.id;
                 
-                //guardo lo que nescesito en la sesion
+    //             //guardo lo que nescesito en la sesion
                
-                // En caso de que haya seleccionado recodarme, guardamos una cookie (check)
-                if(req.body.remember){
-                    res.cookie('userId', usuario.id, {}); //guarda la cookie, que se define del lado del cliente, en este caso mi objeto seria 'userId' (el nombre de la cookie)
-                }
-                res.redirect('/user/profile/' + usuario.id);
-            }
-    }).catch(err =>{
-        console.log(err)
-    });
-    }, 
+    //             // En caso de que haya seleccionado recodarme, guardamos una cookie (check)
+    //             if(req.body.remember){
+    //                 res.cookie('userId', usuario.id, {}); //guarda la cookie, que se define del lado del cliente, en este caso mi objeto seria 'userId' (el nombre de la cookie)
+    //             }
+    //             res.redirect('/user/profile/' + usuario.id);
+    //         }
+    // }).catch(err =>{
+    //     console.log(err)
+    // });
+    // }, 
 
-    logout: (req, res) => {
-        // Borramos la sesion del servidor
-        req.session.destroy();
-        // Eliminamos la cookie del cliente
-        res.clearCookie('userId');
-        res.redirect('/');
-    },
-    delete:function(req, res){
-        //Tendremos que pensar el código del controlador dependiendo de qué estrategia usemos para identificar el id del elemento a borrar. En este caso estamos usando la estrategia del campo hidden dentro del formulario. 
-        let id = req.body.id;
-
-        // return res.send(id);
-
-        db.Usuario.destroy({
-            where: { id:id }
-        })
-            .then(function(){
-                return res.redirect('/');
-            })
-            .catch(function(e){
-                console.log(e);
-            })
-
-    }
 
 };
 
