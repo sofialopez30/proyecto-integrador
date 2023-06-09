@@ -1,7 +1,7 @@
 module.exports = (sequelize, dataTypes) => {
 
-    let alias = 'Usuario';
-
+    let alias = 'Usuario'; 
+ 
     let columnas = {
         id : {
             type: dataTypes.INTEGER,
@@ -19,9 +19,6 @@ module.exports = (sequelize, dataTypes) => {
         }, 
         fotoPerfil : {
             type: dataTypes.STRING
-        }, 
-        fecha : {
-            type: dataTypes.DATE
         }, 
         numDocumento : {
             type: dataTypes.INTEGER

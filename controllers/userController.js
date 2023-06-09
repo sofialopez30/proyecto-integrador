@@ -1,19 +1,17 @@
 let bcrypt = require('bcryptjs');
-let db= require ('../database/models');
-let Usuario = db.Usuario; 
-
+let db = require('../database/models');
+let Usuario = db.Usuario;
 
 let userController = {
-    
+
     login: function (req, res) {
         if (req.session.user) {
             return res.redirect('/')
-
         } else {
             return res.render('login');
         }
     },
-
+    
     validarLogin: (req, res) => {
 
         db.Usuario.findOne({

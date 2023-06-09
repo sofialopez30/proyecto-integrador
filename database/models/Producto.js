@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
 
-    let alias = 'Producto';
+    let alias = 'Producto'; 
 
     let columnas = {
         id : {
@@ -13,9 +13,6 @@ module.exports = (sequelize, dataTypes) => {
         },
         imagen : {
             type: dataTypes.STRING
-        },
-        fechaDeCarga : {
-            type: dataTypes.DATE
         },
         descripcionProducto : {
             type: dataTypes.STRING
