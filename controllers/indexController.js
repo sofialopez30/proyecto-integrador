@@ -13,7 +13,7 @@ let indexController = {
                 {association : 'producto_comentario', include : 'comentario_usuario'}
             ],
             order: [[
-                'updatedAt', 'ASC'
+                'updatedAt', 'DESC'
             ]]
         })
         .then(arrayProductos => {
