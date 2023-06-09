@@ -70,23 +70,30 @@ let userController = {
             });
     },
 
+
     profile: function (req, res) {
 
         let id = req.params.id;
 
-        Usuario.findByPk(id, {
+        db.Usuario.findByPk(id, {
             include: [
                 { association: 'productos_usuario', include: {
                     association: 'comentarios_producto', include: 'comentario_usuario' }
                 },
-            ]
+                
+            ],
+            order: [
+                ['createdAt', 'ASC']
+            ],
         })
             .then(function (user) {
-                if (user) {
-                    res.render('profile', { user : user });
-                } else {
-                    res.send('Este usuario no existe')
-                }
+                let productosUsuario = user.productos
+                    return res.render('profile', {user: user, mostrar: productosUsuario})
+                // if (user) {
+                //     res.render('profile', { user : user });
+                // } else {
+                //     res.send('Este usuario no existe')
+                // }
             })
             .catch(function (err) {
                 res.send(err);
