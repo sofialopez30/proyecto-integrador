@@ -8,7 +8,7 @@ module.exports = (sequelize, dataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
-        cometario : {
+        comentario : {
             type: dataTypes.STRING
         },
         infoUsuario_id : {

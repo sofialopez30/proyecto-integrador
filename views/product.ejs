@@ -5,51 +5,46 @@
 
 <body>
 	<!-- Header -->
-	<%- include('partials/header') %>
+	<% if (locals.user) { %>
+		<%- include('partials/headerLogueado') %>
+	<% } else { %>
+		<%- include('partials/header') %>
+	<% } %>
 	<!-- /Header -->
 
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"> <%= cerveza.nombre %> </h2>  <!-- Esto da error en la pagina de product-add-->
-			<p class="product-detail-description">
-				<a href="/product/product-add/:id">Agregar producto</a>
-			</p>
-		</div>
-
-		<% for (let i = 0; i < info.length; i++) { %>
-			<% if (info[i].id == id) { %>
-				<div class="product-detail">
-					<div class="row">
-						<article class="col-12 col-lg-8 product-detail-info">
-							<img src="/images/products/<%= cerveza.imagen %>" alt="" class="product-detail-img"> 
-							<p class="product-detail-description"> <%= info[i].descripcion %> </p>
-						</article>
-						<div class="col-12 col-lg-4">
-							<section class="comments">
+			<div class="product-detail">
+				<div class="row">
+					<article class="col-12 col-lg-8 product-detail-info">
+						<h2 class="products-title"> <%= producto.nombreProducto %> </h2>
+						<img src="<%= producto.imagen %>" alt="" class="product-detail-img"> 
+						<p class="product-detail-description"> <%= producto.descripcionProducto %> </p>
+					</article>
+					<div class="col-12 col-lg-4">
+						<section class="comments">
+							<h3>Comentarios</h3>
+							<% for (let i = 0; i < producto.comentarios_producto.length; i++) { %>
 								<article>
-									<img src="/images/users/stewart.jpg" alt="">
+									<img src="<%= producto.comentarios_producto[i].comentario_usuario.fotoPerfil %>" alt="">
 									<div class="data">
 										<p class="user">
-										<strong> <a href="/users/profile/<%= info[i].usuario.id %>"> <%= info[i].usuario.nombre %>: </a> </strong>  
-										 <%= info[i].usuario.comentario %> </p>
+										<strong> <a href="/users/profile/<%= producto.comentarios_producto[i].comentario_usuario.id %>"> <%= producto.comentarios_producto[i].comentario_usuario.user %>: </a> </strong>  
+										 <%= producto.comentarios_producto[i].comentario %> </p>
 									</div>
 								</article>
-					
-		
-							</section>
-							<form class="form" action="" method="GET">
-								<input class="form-input-comentario" type="text" value="" placeholder="Agregar comentario">
-								<br><button type="submit" class="agregar-comentario">AGREGAR COMENTARIO</button> <br>
-							</form>
-							<hr>
-						</div>
+							<% } %>
+						</section>
+						<form class="form" action="/product/comentar/<%= producto.id %>" method="POST">
+							<input class="form-input-comentario" type="text" name="comentario" placeholder="Agregar comentario">
+							<br><button type="submit" class="agregar-comentario">AGREGAR COMENTARIO</button> <br>
+						</form>
+						<hr>
 					</div>
 				</div>
 			</div>
-			<% } %>
-
-		<% } %>
+		</div>
 
 
 	<!-- /product detail -->

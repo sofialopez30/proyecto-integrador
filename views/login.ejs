@@ -4,36 +4,36 @@
 
 <%- include('partials/head') %>
 
-<body>
-	<!-- Header -->
-	<%- include('partials/header') %>
-	<!-- /Header -->
+	<body>
+		<!-- Header -->
+		<%- include('partials/header') %>
+		<!-- /Header -->
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-        <h2 class="products-title">Sign In</h2>
-        <h3 class="products-title"> Use your account</h3>
+		<!-- Novedades -->
+		<div class="container products-wrapper">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="products-title">Sign In</h2>
+				</div>
 			</div>
-			<!-- Show the "ultimos" products -->
-    
+			<form method="POST">
+				<label for="usuario">Usuario:</label>
+				<input type="text" name="usuario" placeholder="Usuario" class="form-input">
+
+				<label for="contrasenia">Contraseña:</label>
+				<input type="password" name="contrasenia" placeholder="ingrese su Contraseña" class="form-input">
+
+				<label for="recordarme">Recordarme</label>
+				<input type="checkbox" name="recordarme" value="recordarme">
+
+				<button type="submit" class="">Iniciar sesión</button>
+			</form>
 		</div>
-	
+		
+		<!-- footer -->
+		<%- include('partials/footer') %>
+		<!-- /footer -->
 
-		<form action="/users/profile/:id" method="POST" class="">
-			<label for="usuario" >Usuario:</label>
-			<input type="text" name="usuario" placeholder="Usuario" class="form-input">
-
-			<br><label for="contrasenia">Contraseña:</label> <br>
-			<input type="password" name="contrasenia" placeholder="ingrese su Contraseña" class="form-input">
-
-			<br><button type="submit" class="">Iniciar sesión</button><br>
-		</form>
-	</div>
-	<!-- footer -->
-	<%- include('partials/footer') %>
-	<!-- /footer -->
-</body>
+	</body>
 
 </html>

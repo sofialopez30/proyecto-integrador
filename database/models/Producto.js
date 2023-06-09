@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
 
-    let alias = 'Producto';
+    let alias = 'Producto'; 
 
     let columnas = {
         id : {
@@ -13,9 +13,6 @@ module.exports = (sequelize, dataTypes) => {
         },
         imagen : {
             type: dataTypes.STRING
-        },
-        fechaDeCarga : {
-            type: dataTypes.DATE
         },
         descripcionProducto : {
             type: dataTypes.STRING
@@ -46,7 +43,7 @@ module.exports = (sequelize, dataTypes) => {
         })
 
         Producto.hasMany(models.Comentario, {
-            as : 'producto_comentario',
+            as : 'comentarios_producto',
             foreignKey : 'infoProducto_id'
         })
     }

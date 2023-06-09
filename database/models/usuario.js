@@ -1,7 +1,7 @@
 module.exports = (sequelize, dataTypes) => {
 
-    let alias = 'Usuario';
-
+    let alias = 'Usuario'; 
+ 
     let columnas = {
         id : {
             type: dataTypes.INTEGER,
@@ -19,9 +19,6 @@ module.exports = (sequelize, dataTypes) => {
         }, 
         fotoPerfil : {
             type: dataTypes.STRING
-        }, 
-        fecha : {
-            type: dataTypes.DATE
         }, 
         numDocumento : {
             type: dataTypes.INTEGER
@@ -44,12 +41,12 @@ module.exports = (sequelize, dataTypes) => {
 
     Usuario.associate = (models) => {
         Usuario.hasMany(models.Producto, {
-            as : 'usuario_producto',
+            as : 'productos_usuario',
             foreignKey : 'infoUsuario_id'
         })
 
         Usuario.hasMany(models.Comentario, {
-            as : 'usuario_comentario',
+            as : 'comentarios_usuario',
             foreignKey : 'infoUsuario_id'
         })
     }

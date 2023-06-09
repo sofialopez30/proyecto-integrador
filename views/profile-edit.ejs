@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Include Head -->
-
-	<%- include('partials/head') %>
+<%- include('partials/head') %>
 
 <body>
 	<!-- Header -->
-  <%- include('partials/headerLogueado') %>
+	<% if (locals.user) { %>
+		<%- include('partials/headerLogueado') %>
+	<% } else { %>
+		<%- include('partials/header') %>
+	<% } %>
 	<!-- /Header -->
 
 	<!-- Novedades -->
@@ -16,34 +19,36 @@
 				<h2 class="products-title">Editar mi perfil</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>
-			</h2>
-      <form method="GET" action="/users/profile/:id">
-				<label>Email:</label>
-				<input type="email" placeholder="ingrese su email" name="email" required  class="form-input"><br>
-			  
-				<label>Usuario:</label>
-				<input type="text"placeholder="ingrese un nombre de usuario" name="usuario" required  class="form-input"><br>
-			  
-				<label>Contraseña:</label>
-				<input type="password" placeholder="ingrese una Contraseña" name="contrasenia" required  class="form-input"><br>
-			  
-				<label>Fecha de nacimiento:</label>
-				<input type="date" placeholder="ingrese su fecha de nacimiento" name="fechadeNac" required  class="form-input"><br>
-			  
-				<label>Número de documento:</label>
-				<input type="number"  placeholder="ingrese su numero de documento" name="numeroDoc" required  class="form-input"><br>
-			  
-				<label>Foto de perfil:</label>
-				<input type="file" placeholder="imagen del producto" name="img" required class="form-input" ><br>
-			  
-				<button type="submit">Confirmar datos</button>
+			<div>
+				<form method="POST">
+				  <label>Email:</label>
+				  <input type="email" placeholder="ingrese su email" name="email" required  class="form-input"><br>
+				
+				  <label>Usuario:</label>
+				  <input type="text"placeholder="ingrese un nombre de usuario" name="usuario" required  class="form-input"><br>
+				
+				  <label>Contraseña:</label>
+				  <input type="password" placeholder="ingrese una Contraseña" name="contrasenia" required  class="form-input"><br>
+				
+				  <label>Fecha de nacimiento:</label>
+				  <input type="date" placeholder="ingrese su fecha de nacimiento" name="fechaNac" required  class="form-input"><br>
+				
+				  <label>Número de documento:</label>
+				  <input type="number"  placeholder="ingrese su numero de documento" name="numeroDocumento" required  class="form-input"><br>
+				
+				  <label>Foto de perfil:</label>
+				  <input type="text" placeholder="imagen del producto" name="imagen" required class="form-input" ><br>
+				
+				  <button type="submit">Confirmar datos</button>
 			  </form>
-
+			</div>
+		</div>
+	</div>
 
 	<!-- footer -->
-  <%- include('partials/footer') %>
+  	<%- include('partials/footer') %>
 	<!-- /footer -->
+
 </body>
 
 </html>
