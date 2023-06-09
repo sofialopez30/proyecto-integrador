@@ -117,8 +117,7 @@ let userController = {
                 res.send(err);
             });
     },
-
-    logout: (req, res) => {
+    logout: function(req,res) {
         req.session.destroy();
         res.clearCookie('usuario');
         res.redirect('/');
