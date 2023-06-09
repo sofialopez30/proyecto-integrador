@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+
+<!-- Incluir head con include-->
+<%- include('partials/head') %>
+
+	<body>
+		<!-- Header -->
+		<% if (locals.user) { %>
+			<%- include('partials/headerLogueado') %>
+		<% } else { %>
+			<%- include('partials/header') %>
+		<% } %>
+		<!-- /Header -->
+
+		<!-- Novedades -->
+		<div class="banner">
+			<img src="/images/sale.png" alt="Banner de ofertas">
+		</div>
+		
+		<div class="container products-wrapper">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="products-title">Editar producto</h2>
+				</div>
+			</div>
+			
+			<form method="POST">
+				<label>Imagen:</label>
+				<input type="text" placeholder="imagen del producto" name="imagen" required
+					class="form-input"><br>
+
+				<label>Nombre del producto:</label>
+				<input type="text" placeholder="ingrese nombre del producto"
+					name="nombreProducto" required class="form-input"><br>
+
+				<label>Descripción:</label>
+				<textarea placeholder="ingrese una breve descripcion del producto"
+					name="descripcionProducto" required class="form-input"></textarea><br>
+
+				<button type="submit">Agregar producto al catálogo</button>
+			</form>
+		</div>
+
+		<!-- footer -->
+		<%- include('partials/footer') %>
+		<!-- /footer -->
+
+	</body>
+
+</html>

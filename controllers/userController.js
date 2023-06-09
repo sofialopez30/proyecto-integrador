@@ -1,6 +1,6 @@
-let bcrypt = require('bcryptjs');
-let db = require('../database/models');
-let Usuario = db.Usuario;
+let bcrypt = require('bcryptjs')
+let db = require('../database/models')
+let Usuario = db.Usuario
 
 let userController = {
 
@@ -69,6 +69,7 @@ let userController = {
                 res.send(err);
             });
     },
+
     profile: function (req, res) {
 
         let id = req.params.id;
@@ -80,10 +81,9 @@ let userController = {
                 },
             ]
         })
-        
             .then(function (user) {
                 if (user) {
-                    res.render('profile', { user : user });
+                    res.render('profile', { usuario : user });
                 } else {
                     res.send('Este usuario no existe')
                 }
@@ -100,25 +100,27 @@ let userController = {
             return res.redirect('/')
         }
     },
-    
 
     editarPerfil: function (req, res) {
         db.Usuario.update({
             email: req.body.email,
             user: req.body.usuario,
-            contrasenia: bcriptjs.hashSync(req.body.contrasenia, 10),
+            contrasenia: bcrypt.hashSync(req.body.contrasenia, 10),
             fotoPerfil: '/images/users/' + req.body.imagen,
             fecha: req.body.fechaNac,
             numDocumento: req.body.numeroDocumento
+        },{
+            where: {'id': req.session.user.id}
         })
             .then(function (usuarioActualizado) {
-                return res.redirect('/users/profile/' + usuarioActualizado.id);
+                return res.redirect('/users/profile/' + req.session.user.id);
             })
             .catch(function (err) {
                 res.send(err);
             });
     },
-    logout: function(req,res) {
+
+    logout: (req, res) => {
         req.session.destroy();
         res.clearCookie('usuario');
         res.redirect('/');
