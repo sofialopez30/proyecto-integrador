@@ -13,4 +13,6 @@ router.post('/profile-edit', userController.editarPerfil); //toma los datos del 
 
 router.get('/profile/:id', userController.profile);
 
-module.exports = router;
+module.exports = router
+
+

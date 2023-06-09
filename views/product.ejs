@@ -18,6 +18,14 @@
 			<div class="product-detail">
 				<div class="row">
 					<article class="col-12 col-lg-8 product-detail-info">
+						<% if (locals.user) { %>
+							<% if (locals.user.id == producto.producto_usuario.id) { %>
+								<form action="/product/eliminar/<%= producto.id %>" method="POST">
+									<button type="submit">Eliminar producto</button>
+								</form>
+								<a href="/product/product-edit/<%= producto.id %>">Editar producto</a>
+							<% } %>
+						<% } %>
 						<h2 class="products-title"> <%= producto.nombreProducto %> </h2>
 						<img src="<%= producto.imagen %>" alt="" class="product-detail-img"> 
 						<p class="product-detail-description"> <%= producto.descripcionProducto %> </p>
