@@ -18,39 +18,26 @@
 			<div class="row">
 				<div class="col-12">
 					<h2 class="products-title">RESULTADOS</h2>
-				</div>
 
-				<% if (listado_cervezas.length == 0) { %>
-					<div class="col-12">
-						<h2 class="products-title">No se encontraron resultados para: <%= busqueda %></h2>
-					</div>
-				<% } else { %>
-					<% for (let i=0; i < listado_cervezas.length; i++) { %>
-	
+
+					<%for (let i=0; i<mostrar.length; i++){ %>
 						<div class="col-12 col-sm-6 col-lg-3">
+						
 							<section class="product-box">
-								<!-- marca como que listado_cervezas no esta definido  -->
-								<a href="/product/<%= listado_cervezas[i].id %>">
+								<a href="/product/<%=mostrar[i].id%>">
 									<figure class="product-box_image">
-										<img src="<%= listado_cervezas[i].imagen %>" alt="<%= listado_cervezas[i].nombreProducto %>">
+										<img src="<%=mostrar[i].imagen%>" alt="<%=mostrar[i].nombreProducto%>">
 									</figure>
 									<article class="product-box_data">
-										<h2>
-											<%= listado_cervezas[i].nombreProducto %>
-										</h2>
-										<p>
-											<%= listado_cervezas[i].descripcion %>
-										</p>
-										<p>Comentarios: <%=
-												listado_cervezas[i].comentarios_producto.length %>
-										</p>
+										<h2><%=mostrar[i].nombreProducto%></h2>
+										<p><%=mostrar[i].descripcionProducto%></p>
+										<p>Comentarios: <%=mostrar[i].comentarios_producto.length%></p> 
 									</article>
 								</a>
 							</section>
+							
 						</div>
-	
-					<% } %>
-				<% } %>
+					<%}%>
 			</div>
 		</div>
 
