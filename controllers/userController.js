@@ -69,31 +69,24 @@ let userController = {
                 res.send(err);
             });
     },
-
-
     profile: function (req, res) {
 
         let id = req.params.id;
 
-        db.Usuario.findByPk(id, {
+        Usuario.findByPk(id, {
             include: [
                 { association: 'productos_usuario', include: {
                     association: 'comentarios_producto', include: 'comentario_usuario' }
                 },
-                
-            ],
-            order: [
-                ['createdAt', 'ASC']
-            ],
+            ]
         })
+        
             .then(function (user) {
-                let productosUsuario = user.productos
-                    return res.render('profile', {user: user, mostrar: productosUsuario})
-                // if (user) {
-                //     res.render('profile', { user : user });
-                // } else {
-                //     res.send('Este usuario no existe')
-                // }
+                if (user) {
+                    res.render('profile', { user : user });
+                } else {
+                    res.send('Este usuario no existe')
+                }
             })
             .catch(function (err) {
                 res.send(err);
@@ -107,6 +100,7 @@ let userController = {
             return res.redirect('/')
         }
     },
+    
 
     editarPerfil: function (req, res) {
         db.Usuario.update({
