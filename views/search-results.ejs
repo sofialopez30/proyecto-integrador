@@ -4,55 +4,60 @@
 
 <%- include('partials/head') %>
 
-<body>
-	<!-- Header -->
-	<% if (locals.user) { %>
-		<%- include('partials/headerLogueado') %>
-			<% } else { %>
-				<%- include('partials/header') %>
-					<% } %>
-	<!-- /Header -->
+	<body>
+		<!-- Header -->
+		<% if (locals.user) { %>
+			<%- include('partials/headerLogueado') %>
+		<% } else { %>
+			<%- include('partials/header') %>
+		<% } %>
+		<!-- /Header -->
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-		
-			<!-- Show the "ultimos" products -->
-		
-			
-			
-			
-			<div class="container products-wrapper">
-				<div class="row">
+		<!-- Novedades -->
+		<div class="container products-wrapper">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="products-title">RESULTADOS</h2>
+				</div>
+
+				<% if (listado_cervezas.length == 0) { %>
 					<div class="col-12">
-						<h2 class="products-title">RESULTADOS</h2>
-		
+						<h2 class="products-title">No se encontraron resultados para: <%= busqueda %></h2>
 					</div>
-			  <% for (let i = 0; i < 4; i++) { %>
-			  
+				<% } else { %>
+					<% for (let i=0; i < listado_cervezas.length; i++) { %>
+	
 						<div class="col-12 col-sm-6 col-lg-3">
 							<section class="product-box">
-								<a href="/product/<%= listado_cervezas[i].id %>">  
+								<!-- marca como que listado_cervezas no esta definido  -->
+								<a href="/product/<%= listado_cervezas[i].id %>">
 									<figure class="product-box_image">
-										<img src="/images/products/<%= listado_cervezas[i].imagen %>" alt="<%= listado_cervezas[i].nombre %>">
+										<img src="<%= listado_cervezas[i].imagen %>" alt="<%= listado_cervezas[i].nombreProducto %>">
 									</figure>
 									<article class="product-box_data">
-										<h2><%= listado_cervezas[i].nombre %></h2>
-										<p><%= listado_cervezas[i].descripcion %></p>
-										<p>Comentarios: <%= listado_cervezas[i].usuario.comentario %></p>
+										<h2>
+											<%= listado_cervezas[i].nombreProducto %>
+										</h2>
+										<p>
+											<%= listado_cervezas[i].descripcion %>
+										</p>
+										<p>Comentarios: <%=
+												listado_cervezas[i].comentarios_producto.length %>
+										</p>
 									</article>
 								</a>
 							</section>
 						</div>
+	
 					<% } %>
-					<!-- Show the "ultimos" products -->
-				</div>
+				<% } %>
 			</div>
+		</div>
 
+		<!-- footer -->
+		<%- include('partials/footer') %>
+		<!-- /footer -->
 
-	<!-- footer -->
-    <%- include('partials/footer') %>
-	<!-- /footer -->
-</body>
+	</body>
 
 </html>
