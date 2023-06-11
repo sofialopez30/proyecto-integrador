@@ -17,7 +17,7 @@ let productController = {
         })
             .then(function (producto) {
                 if (producto) {
-                    res.render('product', { producto : producto }) // no se si esta bien producot: producto, no se si deberia ir nombreProducto
+                    res.render('product', { producto : producto }) 
                 } else {
                     res.send(' Este producto no se encuentra en nuestra web, prueba otra cosa!')
                 }
@@ -27,7 +27,7 @@ let productController = {
             })
     },
 
-    productAdd: function (req, res) {   /// hay que hacer este que tire la base de datos
+    productAdd: function (req, res) {   
         if (req.session.user) {
             return res.render("product-add")
         } else {
@@ -78,7 +78,7 @@ let productController = {
     },
 
     eliminarProducto: function(req, res) {
-        let idPorducto = req.params.id
+        let idPorducto = req.params.id;
 
         Usuario.findByPk(req.session.user.id)
             .then(function (usuario) {
