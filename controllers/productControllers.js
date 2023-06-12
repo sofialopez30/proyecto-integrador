@@ -88,13 +88,13 @@ let productController = {
                             where: {
                                 id: idProducto
                             },
-                            //force: true //hay q ver que creo que no lo vimos 
+                            
                         })
                             .then(function () {
-                                res.redirect("/users/profile")
+                                res.redirect("/users/profile/"  + req.session.user.id)
                             })
-                            .catch(function (err) {
-                                res.send(err)
+                            .catch(function (error) {
+                                res.send(error)
                             })
                     } else {
                         res.send("No tiene permisos para eliminar este producto")
