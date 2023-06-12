@@ -31,12 +31,19 @@ let userController = {
         
                         if (req.body.remember) {
                             res.cookie('usuario', usuario.id, { maxAge: 1000 * 60 * 60 * 24 * 7 })
-                        }
+                        } 
         
                         return res.redirect('/')
-                    } else {
-                        return res.render('login', { error: 'La contraseña no es correcta' })
-                    }
+                     } if (req.body.contrasenia != bcrypt.compareSync ){
+                        res.send('La contraseña no es correcta')
+
+                      } 
+                    //if(req.session.user !=  bcrypt.compareSync) {
+                    //     res.send ("el usuario no existe")
+                    //  }
+                    //else {
+                    //     return res.send('La contraseña no es correcta') 
+                    // }
                 }
             })
             .catch(function (err) {
