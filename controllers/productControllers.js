@@ -72,7 +72,7 @@ let productController = {
                     res.send(err)
                 })
         } else {
-            res.send("No está logueado, no puede comentar")
+            res.redirect('/users/login')
         }
 
     },

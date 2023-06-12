@@ -155,7 +155,7 @@ button{
   background: transparent;
   border: 0px;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 23px;
 }
 
 .logout:hover{
@@ -412,7 +412,9 @@ button{
   padding: 15px 30px;
   margin-top: 15px;
 }
-
+.boton-iniciar-sesion{
+  margin: 40px;
+}
 .action-button.edit {
   background-color: chocolate;
 }
@@ -501,6 +503,7 @@ textarea.form-input {
 .foto-perfil{
   border-radius: 50%;
 }
+
 
 .main-title{
   font-size: 25px;

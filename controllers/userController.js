@@ -34,10 +34,17 @@ let userController = {
                         } 
         
                         return res.redirect('/')
-                     } if (req.body.contrasenia != bcrypt.compareSync ){
+                     } if (req.body.contrasenia != bcrypt.compareSync){
                         res.send('La contraseña no es correcta')
-
-                      } 
+                      }
+                    // if(req.body.usuario != null){
+                    //     res.send ("el usuario no existe")
+                    //  }
+                    // if (usuario.contraenia != bcrypt.compareSync ){
+                    //     res.send('Este usuario no existe')
+                    //  }
+    
+                    
                     //if(req.session.user !=  bcrypt.compareSync) {
                     //     res.send ("el usuario no existe")
                     //  }
