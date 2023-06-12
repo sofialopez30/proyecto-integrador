@@ -15,7 +15,7 @@ let indexController = {
                 'updatedAt', 'DESC'
             ]]
         })
-            .then(arrayProductos => {
+            .then(function(arrayProductos){
                 res.render("index", {listado_cervezas: arrayProductos})
             })
             .catch(function (error) {
@@ -72,7 +72,7 @@ module.exports = indexController;
 //                 'updatedAt', 'DESC'
 //             ]]
 //         })
-//             .then(arrayProductos => {
+//             .then(arrayProductos{
 //                 res.render("index", {listado_cervezas: arrayProductos})
 //             })
 //             .catch(function (error) {

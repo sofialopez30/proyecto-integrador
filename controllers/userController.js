@@ -12,7 +12,7 @@ let userController = {
         }
     },
     
-    validarLogin: (req, res) => {
+    validarLogin: function(req, res){
 
         db.Usuario.findOne({
             where: {
@@ -120,7 +120,7 @@ let userController = {
             });
     },
 
-    logout: (req, res) => {
+    logout: function (req, res) {
         req.session.destroy();
         res.clearCookie('usuario');
         res.redirect('/');

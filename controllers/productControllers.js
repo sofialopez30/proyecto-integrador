@@ -78,7 +78,7 @@ let productController = {
     },
 
     eliminarProducto: function(req, res) {
-        let idPorducto = req.params.id;
+        let idProducto = req.params.id;
 
         Usuario.findByPk(req.session.user.id)
             .then(function (usuario) {
@@ -86,9 +86,9 @@ let productController = {
                     if (usuario.id == req.session.user.id) {
                         Producto.destroy({
                             where: {
-                                id: idPorducto
+                                id: idProducto
                             },
-                            force: true
+                            //force: true //hay q ver que creo que no lo vimos 
                         })
                             .then(function () {
                                 res.redirect("/users/profile")
