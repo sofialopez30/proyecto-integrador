@@ -77,12 +77,13 @@ let userController = {
             numDocumento: req.body.numeroDocumento
         })
             .then(function (usuarioCreado) {
+                
                 return res.redirect('/users/login');
             })
             .catch(function (err) {
                 res.send(err);
-            });
-    },
+            });
+    },
 
     profile: function (req, res) {
 
