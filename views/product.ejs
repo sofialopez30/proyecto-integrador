@@ -27,7 +27,12 @@
 							<% } %>
 						<% } %>
 						<h2 class="products-title"> <%= producto.nombreProducto %> </h2>
-						<img src="<%= producto.imagen %>" alt="" class="product-detail-img"> 
+						<img src="<%= producto.imagen %>" alt="" class="product-detail-img">
+	
+								<p class="product-detail-description">Publicado por
+							  		<a href="/users/profile/<%= producto.producto_usuario.id %>"><%= producto.producto_usuario.user %></a>
+								</p>
+						  
 						<p class="product-detail-description"> <%= producto.descripcionProducto %> </p>
 					</article>
 					<div class="col-12 col-lg-4">

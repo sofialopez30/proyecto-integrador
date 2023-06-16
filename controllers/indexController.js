@@ -27,19 +27,29 @@ let indexController = {
 
         let search = req.query.search
 
-        Producto.findAll({
+        db.Producto.findAll({
             where: {
-                nombreProducto: {
-                    [Op.like]: '%' + search + '%'
+                [Op.or]:[
+                {
+                    nombreProducto: {
+                        [Op.like]:  '%' + search + '%'
+                    }
+                },
+
+                {
+                    descripcionProducto: {
+                        [Op.like]: '%' + search + '%'
+                    }
                 }
-            },
+            ]},
+            order: [
+                ['createdAt', 'ASC']
+            ],
             include: [
                 { association: 'producto_usuario' },
                 { association: 'comentarios_producto', include: 'comentario_usuario' }
-            ],
-            order: [[
-                'updatedAt', 'DESC'
-            ]]
+            ]
+
         })
             .then(function (producto) {
                 res.render('search-results', { listado_cervezas: producto, busqueda: search });

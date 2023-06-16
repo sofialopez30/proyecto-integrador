@@ -38,17 +38,17 @@ let productController = {
     procesarProductAdd: function (req, res) {
         let nombreProducto = req.body.nombreProducto;
         let descripcionProducto = req.body.descripcionProducto;
-        let imagenProducto = '/images/products/an.png'; // + req.body.imagen;
-        
+        let imagenProducto = '/images/products/an.png'; // + req.body.imagen; 
         let infoUsuario_id = req.session.user.id;
 
-        Producto.create({
+        db.Producto.create({
             nombreProducto: nombreProducto,
             descripcionProducto: descripcionProducto,
             imagen: imagenProducto,
             infoUsuario_id: infoUsuario_id
         })
             .then(function (resultado) {
+
                 res.redirect("/product/" + resultado.id)
             })
             .catch(function (err) {
