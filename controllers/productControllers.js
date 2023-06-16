@@ -60,7 +60,10 @@ let productController = {
         if (req.session.user) {
             let comentario = req.body.comentario;
     
-            Comentario.create({
+            db.Comentario.create({
+                order: [
+                    ['createdAt', 'DESC']
+                ], 
                 comentario: comentario,
                 infoUsuario_id: req.session.user.id,
                 infoProducto_id: req.params.id

@@ -121,12 +121,15 @@ let userController = {
 
         let id = req.params.id;
 
-        Usuario.findByPk(id, {
+        db.Usuario.findByPk(id, {
             include: [
                 { association: 'productos_usuario', include: {
                     association: 'comentarios_producto', include: 'comentario_usuario' }
                 },
-            ]
+            ],
+            order: [[
+                'createdAt', 'DESC'
+            ]]
         })
             .then(function (user) {
                 if (user) {
