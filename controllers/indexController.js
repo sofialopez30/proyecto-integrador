@@ -37,6 +37,9 @@ let indexController = {
                 { association: 'producto_usuario' },
                 { association: 'comentarios_producto', include: 'comentario_usuario' }
             ],
+            order: [[
+                'updatedAt', 'DESC'
+            ]]
         })
             .then(function (producto) {
                 res.render('search-results', { listado_cervezas: producto, busqueda: search });

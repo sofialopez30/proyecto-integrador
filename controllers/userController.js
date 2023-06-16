@@ -1,30 +1,29 @@
 let bcrypt = require('bcryptjs')
-let db = require('../database/models')
+let db = require('../database/models');
+const { or } = require('sequelize');
 let Usuario = db.Usuario
 
 let userController = {
 
     login: function (req, res) {
         if (req.session.user) {
-            return res.redirect('/')
+            return res.redirect('/');
         } else {
             return res.render('login');
         }
     },
+
     
     validarLogin: function(req, res){
 
         let form= req.body
         email = form.email;
-        // usuario = form.usuario;
-         contrasenia = form.contrasenia;
-        // fechaNac = form.fechaNac;
-        // numeroDocumento = form.numeroDocumento;
-        // imagen = form.imagen;
+        contrasenia = form.contrasenia;
+
 
         db.Usuario.findOne({
             where: {
-                user: req.body.usuario //no se si aca va user o va usuario
+                user: req.body.usuario 
             }
         })
             .then(function(usuario) {
@@ -86,23 +85,57 @@ let userController = {
     },
 
     registerUsuario: function (req, res) {
-
-        db.Usuario.create({
-            email: req.body.email,
-            user: req.body.usuario,
-            contrasenia: bcrypt.hashSync(req.body.contrasenia, 10),
-            fotoPerfil: '/images/users/' + req.body.imagen,
-            fecha: req.body.fechaNac,
-            numDocumento: req.body.numeroDocumento
+        if (req.body.contrasenia.length < 3) {
+            res.send('La contraseña dDebe tener al menos 3 caracteres')
+          }
+        if (req.body.email == ''){
+            res.send('Debe ingresar un email')
+        }
+      
+        Usuario.findOne({
+            where: {
+            email: req.body.email
+            }
         })
-            .then(function (usuarioCreado) {
-                
-                return res.redirect('/users/login');
+        .then(function (user) {
+             if (user == null) {
+              db.Usuario.findOne({
+                 where: {
+                   user: req.body.usuario
+                 }
+               })
+                .then(function (user) {
+                 if (user == null) {
+                   db.Usuario.create({
+                     email: req.body.email,
+                     user: req.body.usuario,
+                     contrasenia: bcrypt.hashSync(req.body.contrasenia, 10),
+                     fotoPerfil: '/images/users/' + req.body.imagen,
+                      fecha: req.body.fechaNac,
+                      numDocumento: req.body.numeroDocumento
+                   })
+                   .then(function (resultado) {
+                    res.redirect('/users/login')
+                  })
+                  .catch(function (error) {
+                    res.send(error)
+                  })
+              } else {
+                res.send('El nombre de usuario ya existe')
+              }
             })
-            .catch(function (err) {
-                res.send(err);
-            });
-    },
+            .catch(function (error) {
+              res.send(error)
+            })
+        } else {
+          res.send('El email ya existe')
+        }
+      })
+      .catch(function (error) {
+        res.send(error)
+      })
+  },
+      
 
     profile: function (req, res) {
 

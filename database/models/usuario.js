@@ -9,7 +9,7 @@ module.exports = function(sequelize, dataTypes){
             autoIncrement: true
         },
         user: {
-            type: dataTypes.STRING   // este hay que agregarlo en la bbase de datos que no esta 
+            type: dataTypes.STRING   
         },
         email : {
             type: dataTypes.STRING
