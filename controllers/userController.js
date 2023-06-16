@@ -17,7 +17,7 @@ let userController = {
     validarLogin: function(req, res){
 
         let form= req.body
-        email = form.email;
+        usuario = form.usario
         contrasenia = form.contrasenia;
 
 
@@ -26,50 +26,30 @@ let userController = {
                 user: req.body.usuario 
             }
         })
-            .then(function(usuario) {
-                if (usuario) {
-                    if (bcrypt.compareSync(req.body.contrasenia, usuario.contrasenia)) {
-                        
-                        req.session.user = {
-                            id: usuario.id,
-                            user: usuario.user,
-                            email: usuario.email,
-                        };
-        
-                        if (req.body.remember) {
-                            res.cookie('usuario', usuario.id, { maxAge: 1000 * 60 * 60 * 24 * 7 })
-                        } 
-        
-                        return res.redirect('/')
-                     } if (req.body.contrasenia != bcrypt.compareSync){
-                        res.send('La contraseña no es correcta')
-                      } 
-                      if(usuario != null){
-                        errors.message = "El email ya ha sido utilizado."
-                         res.locals.errors = errors;
-                         return res.render('register')
-                      }
-
-
-
-
-
-
-                    // if(req.body.usuario != null){
-                    //     res.send ("el usuario no existe")
-                    //  }
-                    // if (usuario.contraenia != bcrypt.compareSync ){
-                    //     res.send('Este usuario no existe')
-                    //  }
-    
+        .then(function(usuario) {
+            if (usuario) {
+                if (bcrypt.compareSync(req.body.contrasenia, usuario.contrasenia)) {
                     
-                    //if(req.session.user !=  bcrypt.compareSync) {
-                    //     res.send ("el usuario no existe")
-                    //  }
-                    //else {
-                    //     return res.send('La contraseña no es correcta') 
-                    // }
-                }
+                    req.session.user = {
+                        id: usuario.id,
+                        user: usuario.user,
+                        email: usuario.email,
+                    };
+    
+                    if (req.body.remember) {
+                        res.cookie('usuario', usuario.id, { maxAge: 1000 * 60 * 60 * 24 * 7 })
+                    } 
+    
+                    return res.redirect('/')
+                 } 
+                 if (req.body.contrasenia != bcrypt.compareSync){
+                    return res.send(' la contrasena es incorrecta');
+                    
+                 }
+                 
+                } else {
+                    return res.send (' el nombre de usuario es incorrecto')
+                 }
             })
             .catch(function (err) {
                 res.send(err)
@@ -86,7 +66,7 @@ let userController = {
 
     registerUsuario: function (req, res) {
         if (req.body.contrasenia.length < 3) {
-            res.send('La contraseña dDebe tener al menos 3 caracteres')
+            res.send('La contraseña debe tener al menos 3 caracteres')
           }
         if (req.body.email == ''){
             res.send('Debe ingresar un email')
