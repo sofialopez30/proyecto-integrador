@@ -38,7 +38,7 @@ let productController = {
     procesarProductAdd: function (req, res) {
         let nombreProducto = req.body.nombreProducto;
         let descripcionProducto = req.body.descripcionProducto;
-        let imagenProducto = '/images/products/' + req.body.imagen;
+        let imagenProducto = '/images/products/an.png'; // + req.body.imagen;
         
         let infoUsuario_id = req.session.user.id;
 

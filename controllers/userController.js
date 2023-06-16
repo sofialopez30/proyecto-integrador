@@ -14,6 +14,14 @@ let userController = {
     
     validarLogin: function(req, res){
 
+        let form= req.body
+        email = form.email;
+        // usuario = form.usuario;
+         contrasenia = form.contrasenia;
+        // fechaNac = form.fechaNac;
+        // numeroDocumento = form.numeroDocumento;
+        // imagen = form.imagen;
+
         db.Usuario.findOne({
             where: {
                 user: req.body.usuario //no se si aca va user o va usuario
@@ -36,7 +44,18 @@ let userController = {
                         return res.redirect('/')
                      } if (req.body.contrasenia != bcrypt.compareSync){
                         res.send('La contraseña no es correcta')
+                      } 
+                      if(usuario != null){
+                        errors.message = "El email ya ha sido utilizado."
+                         res.locals.errors = errors;
+                         return res.render('register')
                       }
+
+
+
+
+
+
                     // if(req.body.usuario != null){
                     //     res.send ("el usuario no existe")
                     //  }
